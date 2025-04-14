@@ -235,22 +235,22 @@ function SendToSQL(userName, firstName, lastName, email, genderValue, phonePrefi
     console.log("Phone:", phone);
     console.log("Year Born:", yearBorn);
     console.log("City:", city);
-    console.log('users_password', password);
-    console.log('users_password_authentication', passwordConfirm);
+    console.log('userPassword', password);
+    console.log('userPassword_authentication', passwordConfirm);
 
     const hobbyValues = Array.from(hobbies).map(hobby => hobby.value);
     formData.append('hobbies', hobbyValues.join(', '));
 
-    formData.append('users_name', userName);
-    formData.append('users_first_name', firstName);
-    formData.append('users_last_name', lastName);
+    formData.append('userName', userName);
+    formData.append('userFirstName', firstName);
+    formData.append('userLastName', lastName);
     formData.append('email', email);
     formData.append('gender', genderValue);
     formData.append('phone', phone);
     formData.append('yearBorn', yearBorn);
     formData.append('city', city);
     formData.append('admin', 0);
-    formData.append('users_password', password);
+    formData.append('userPassword', password);
 
     formData.append('formPage', 'signup');
     fetch('../aspx/SqlCode.aspx', {

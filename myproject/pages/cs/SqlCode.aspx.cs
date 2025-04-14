@@ -94,7 +94,7 @@ namespace SqlCode_namespace
                 //        Session["email"] = HttpContext.Current.Request.Form["email"];
                 //        Session["first_name"] = userDetails.ContainsKey("first_name") ? userDetails["first_name"] : "";
                 //        Session["last_name"] = userDetails.ContainsKey("last_name") ? userDetails["last_name"] : "";
-                //        Session["users_name"] = userDetails.ContainsKey("users_name") ? userDetails["users_name"] : "";
+                //        Session["userName"] = userDetails.ContainsKey("userName") ? userDetails["userName"] : "";
                 //        Session["admin"] = userDetails.ContainsKey("admin") && int.TryParse(userDetails["admin"].ToString(), out int adminValue) ? adminValue : 0;
                 //        Response.Write("Welcome!");
                 //        /*if (Session["admin"] != null && Convert.ToInt32(Session["admin"]) == 1)
@@ -117,14 +117,14 @@ namespace SqlCode_namespace
 
                 else if (formSource == "new tip")
                 {
-                    Session["users_name"] = HttpContext.Current.Request.Form["users_name"];
+                    Session["userName"] = HttpContext.Current.Request.Form["userName"];
                     bool result = InsertNewTip();
                     if (result)
                     {
                        /* Session["email"] = HttpContext.Current.Request.Form["email"];
                         Session["first_name"] = userDetails.ContainsKey("first_name") ? userDetails["first_name"] : "";
                         Session["last_name"] = userDetails.ContainsKey("last_name") ? userDetails["last_name"] : "";
-                        Session["users_name"] = userDetails.ContainsKey("users_name") ? userDetails["users_name"] : "";
+                        Session["userName"] = userDetails.ContainsKey("userName") ? userDetails["userName"] : "";
                         Session["admin"] = userDetails.ContainsKey("admin") && int.TryParse(userDetails["admin"].ToString(), out int adminValue) ? adminValue : 0;
                        */
                         Response.Write("New Tip Was Added!");
@@ -206,7 +206,7 @@ namespace SqlCode_namespace
         //{
         //    try
         //    {
-        //        string query = "SELECT users_name, users_first_name, users_last_name, email FROM users WHERE email = @email AND users_password = @users_password";
+        //        string query = "SELECT userName, userFirstName, userLastName, email FROM users WHERE email = @email AND userPassword = @userPassword";
 
         //        var formParams = ConvertFormToParams(HttpContext.Current.Request);
         //        var queryResult = RunQuery(query, formParams);
@@ -214,8 +214,8 @@ namespace SqlCode_namespace
         //        if (queryResult.result is List<Dictionary<string, object>> results && results.Count > 0)
         //        {
         //            // שמירת פרטי המשתמש ב-Session
-        //            Session["users_first_name"] = results[0]["users_first_name"].ToString();
-        //            Session["users_last_name"] = results[0]["users_last_name"].ToString();
+        //            Session["userFirstName"] = results[0]["userFirstName"].ToString();
+        //            Session["userLastName"] = results[0]["userLastName"].ToString();
         //            Session["email"] = results[0]["email"].ToString();
         //            return true;
         //        }
@@ -236,7 +236,7 @@ namespace SqlCode_namespace
             Dictionary<string, string> userDetails = new Dictionary<string, string>();
 
             // שאילתה לשליפת פרטי המשתמש
-            string query = "SELECT users_name , users_first_name, users_last_name, email, admin FROM users WHERE email = @email";
+            string query = "SELECT userName , userFirstName, userLastName, email, admin FROM users WHERE email = @email";
 
             try
             {
@@ -250,9 +250,9 @@ namespace SqlCode_namespace
                 {
                     var row = results[0];
 
-                    userDetails["users_name"] = row["users_name"].ToString();
-                    userDetails["first_name"] = row["users_first_name"].ToString();
-                    userDetails["last_name"] = row["users_last_name"].ToString();
+                    userDetails["userName"] = row["userName"].ToString();
+                    userDetails["first_name"] = row["userFirstName"].ToString();
+                    userDetails["last_name"] = row["userLastName"].ToString();
                     userDetails["email"] = row["email"].ToString();
                     userDetails["admin"] = row["admin"].ToString();
                 }
@@ -269,8 +269,8 @@ namespace SqlCode_namespace
             try
             {
                 // שאילתה להוספת משתמש חדש למסד הנתונים
-                string query = @"INSERT INTO users (users_name, users_first_name, users_last_name, email, gender, phone, yearBorn, city, hobbies, users_password, admin)
-VALUES (@users_name, @users_first_name, @users_last_name, @email, @gender, @phone, @yearBorn, @city, @hobbies, @users_password, @admin);
+                string query = @"INSERT INTO users (userName, userFirstName, userLastName, email, gender, phone, yearBorn, city, hobbies, userPassword, admin)
+VALUES (@userName, @userFirstName, @userLastName, @email, @gender, @phone, @yearBorn, @city, @hobbies, @userPassword, @admin);
 ";
 
                 // המרת נתוני הטופס לפרמטרים
@@ -278,7 +278,7 @@ VALUES (@users_name, @users_first_name, @users_last_name, @email, @gender, @phon
                 
                 for (int i = 0; i < formParams.Length; i++)
                 {
-                    if (formParams[i][0].Equals("users_password", StringComparison.OrdinalIgnoreCase))
+                    if (formParams[i][0].Equals("userPassword", StringComparison.OrdinalIgnoreCase))
                     {
 
                         formParams[i][1] = HashPassword(formParams[i][1]); // Replace with the desired new email value
@@ -292,9 +292,9 @@ VALUES (@users_name, @users_first_name, @users_last_name, @email, @gender, @phon
                 if (queryResult.success)
                 {
                     // שמירת פרטי המשתמש ב-Session
-                    Session["UserName"] = HttpContext.Current.Request.Form["users_name"];
-                    Session["FirstName"] = HttpContext.Current.Request.Form["users_first_name"];
-                    Session["LastName"] = HttpContext.Current.Request.Form["users_last_name"];
+                    Session["UserName"] = HttpContext.Current.Request.Form["userName"];
+                    Session["FirstName"] = HttpContext.Current.Request.Form["userFirstName"];
+                    Session["LastName"] = HttpContext.Current.Request.Form["userLastName"];
                     Session["Email"] = HttpContext.Current.Request.Form["email"];
                     return true;  // רישום הצליח
                 }
@@ -316,8 +316,8 @@ VALUES (@users_name, @users_first_name, @users_last_name, @email, @gender, @phon
 
             DateTime currentDate = DateTime.Now;
 
-            string query = @"INSERT INTO tips (tip name, tip date, tip text, tip subject, tip related files,tip name,users_name)
-  VALUES (@tip name, @tip date, @tip text, @tip subject, @tip related files, @users_name);
+            string query = @"INSERT INTO tips (tip name, tip date, tip text, tip subject, tip related files,tip name,userName)
+  VALUES (@tip name, @tip date, @tip text, @tip subject, @tip related files, @userName);
   ";
             var formParams = ConvertFormToParams(HttpContext.Current.Request);
 

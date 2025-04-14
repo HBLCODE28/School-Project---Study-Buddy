@@ -65,7 +65,7 @@ namespace MyProject
 
         private void SaveUserToDatabase(string userName, string firstName, string lastName, string email, string password)
         {
-            string query = @"INSERT INTO users (users_name, users_first_name, users_last_name, email, users_password) 
+            string query = @"INSERT INTO users (userName, userFirstName, userLastName, email, userPassword) 
                              VALUES (@UserName, @FirstName, @LastName, @Email, @Password)";
 
             using (SqlConnection con = new SqlConnection(connectionString))

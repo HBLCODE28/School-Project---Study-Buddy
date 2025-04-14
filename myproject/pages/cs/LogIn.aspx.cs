@@ -40,7 +40,7 @@ namespace LogIn_namespace
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT users_first_name, users_last_name, users_name, admin FROM users WHERE email = @Email";
+                    string query = "SELECT userFirstName, userLastName, userName, admin FROM users WHERE email = @Email";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.Add("@Email", SqlDbType.VarChar).Value = email;
@@ -53,9 +53,9 @@ namespace LogIn_namespace
                             {
                                 // Save user details in session
                                 System.Web.HttpContext.Current.Session["Email"] = email;
-                                System.Web.HttpContext.Current.Session["FirstName"] = reader["users_first_name"].ToString();
-                                System.Web.HttpContext.Current.Session["LastName"] = reader["users_last_name"].ToString();
-                                System.Web.HttpContext.Current.Session["UserName"] = reader["users_name"].ToString();
+                                System.Web.HttpContext.Current.Session["FirstName"] = reader["userFirstName"].ToString();
+                                System.Web.HttpContext.Current.Session["LastName"] = reader["userLastName"].ToString();
+                                System.Web.HttpContext.Current.Session["UserName"] = reader["userName"].ToString();
 
                                 // Check if user is admin
                                 bool isAdmin = Convert.ToInt32(reader["Admin"]) == 1;
@@ -85,7 +85,7 @@ namespace LogIn_namespace
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT users_first_name, users_last_name, users_name, email FROM users";
+                    string query = "SELECT userFirstName, userLastName, userName, email FROM users";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         con.Open();
@@ -97,7 +97,7 @@ namespace LogIn_namespace
 
                             while (reader.Read())
                             {
-                                string user = $"Name: {reader["users_first_name"]} {reader["users_last_name"]}, Username: {reader["users_name"]}, Email: {reader["email"]}";
+                                string user = $"Name: {reader["userFirstName"]} {reader["userLastName"]}, Username: {reader["userName"]}, Email: {reader["email"]}";
                                 usersList.Add(user);
                             }
 
@@ -117,7 +117,7 @@ namespace LogIn_namespace
         {
            //Debug.WriteLine($"Verifying login for email: {email}");
 
-            string query = "SELECT users_password FROM users WHERE email = @Email";
+            string query = "SELECT userPassword FROM users WHERE email = @Email";
 
             try
             {
