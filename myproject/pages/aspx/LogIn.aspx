@@ -70,7 +70,7 @@
         }
 
         /* Updated Button Style */
-        .button {
+        /*.button {
             cursor: pointer;
             position: relative;
             padding: 10px 24px;
@@ -110,7 +110,7 @@
 
         .button:active {
             scale: 1;
-        }
+        }*/
 
     </style>
 

@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>StudyBuddy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap" rel="stylesheet">
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -57,7 +58,7 @@
                             <span class="nav-link">Welcome, <%= Session["UserName"] %>!</span>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/pages/aspx/Profile.aspx">Profile</a>
+                            <a class="nav-link"  href="/pages/aspx/Profile.aspx">Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/pages/aspx/LogOut.aspx">Logout</a>

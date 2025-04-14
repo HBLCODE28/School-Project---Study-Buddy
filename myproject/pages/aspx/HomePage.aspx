@@ -5,8 +5,8 @@
         <!-- Welcome Section -->
         <div class="row mt-5 justify-content-center">
             <div class="col-lg-12 text-center">
-                <h1 class="display-4 font-weight-bold">Welcome to StudyBuddy!</h1>
-                <p class="lead" style="color: #ff4c4c;">On this website, students share study tips to help others succeed.</p>
+                <h1 class="display-4 font-weight-bold" style="color: #ff6f61;">Welcome to StudyBuddy!</h1>
+                <p class="lead" style="color: #ff6f61;">On this website, students share study tips to help others succeed.</p>
             </div>
         </div>
 
@@ -15,15 +15,15 @@
             <div class="col-lg-12 text-center d-flex justify-content-center">
                 <% if (Session["UserName"] != null) { %>
                     <!-- Show both buttons side by side -->
-                    <a href="/pages/aspx/Tips.aspx" class="button-73-red" style="margin-right: 10px;">
+                    <a href="/pages/aspx/Tips.aspx" class="button" style="margin-right: 10px;">
                         Discover Tips!
                     </a>
-                    <a href="/pages/aspx/NewTip.aspx" class="button-73-red">
+                    <a href="/pages/aspx/NewTip.aspx" class="button">
                         Create New Tip!
                     </a>
                 <% } else { %>
                     <!-- Show only one button centered -->
-                    <a href="/pages/aspx/Tips.aspx" class="button-73-red">
+                    <a href="/pages/aspx/Tips.aspx" class="button">
                         Discover Tips!
                     </a>
                 <% } %>
@@ -35,7 +35,7 @@
             <div class="container p-4">
                 <div class="text-center">
                     <p style="color: #ff4c4c;">&copy; <%: DateTime.Now.Year %> - StudyBuddy </p>
-                    <p style="color: #ff4c4c;">Who believes does not document#</p>
+                    <p style="color: #ff4c4c;">מי שמאמין לא מתעד#</p>
                 </div>
             </div>
         </footer>
