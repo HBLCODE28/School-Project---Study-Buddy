@@ -38,7 +38,7 @@
 
         <!-- Gender -->
         <div class="form-field mb-3">
-            <label class="form-label">Gender:</label>
+            <label class="form-label">Gender</label>
             <div>
                 <asp:RadioButtonList ID="gender" runat="server" CssClass="form-check-inline slippery-snail" ClientIDMode="Static" RepeatDirection="Horizontal">
                     <asp:ListItem Text="Male" Value="Male" CssClass="form-check-input" />
