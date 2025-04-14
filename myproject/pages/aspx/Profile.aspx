@@ -1,0 +1,84 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="../cs/Profile.aspx.cs" Inherits="UserPageNameSpace.UserPage" MasterPageFile="../Master/Site.Master" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <!DOCTYPE html>
+        <head>
+            <link rel="stylesheet" type="text/css" href="/css/Site.css">
+            <meta charset="utf-8" />
+            <title>User Profile</title>
+            <style>
+    body {
+        font-family: Arial, sans-serif;
+        direction: ltr;
+        margin: 0;
+        padding: 0;
+    }
+    #container {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    #user-details {
+        width: 48%;
+        padding: 15px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    #user-tips {
+        width: 48%;
+        padding: 15px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+    h2, h3 {
+        color: #D84040; /* אדום */
+    }
+    p {
+        margin: 10px 0;
+        font-size: 14px;
+        color: #FF6666; /* אדום בהיר */
+    }
+    #user-tips p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+    #user-tips::-webkit-scrollbar {
+        width: 8px;
+    }
+    #user-tips::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 5px;
+    }
+    #user-tips::-webkit-scrollbar-thumb:hover {
+        background-color: #555;
+    }
+</style>
+
+        </head>
+        <body>
+            <div id="container">
+                <div id="user-details">
+                    <h2>User Details</h2>
+                    <p id="username">Username: <span runat="server" id="lblUserName"></span></p>
+                    <p id="firstname">First Name: <span runat="server" id="lblFirstName"></span></p>
+                    <p id="lastname">Last Name: <span runat="server" id="lblLastName"></span></p>
+                    <p id="email">Email: <span runat="server" id="lblEmail"></span></p>
+                </div>
+
+         <div id="user-tips" >
+    <h3>User Tips</h3>
+    <asp:Literal ID="UserTipsLiteral" runat="server" />
+</div>
+
+
+            <div id="Div1" runat="server">
+                <!-- The table will be shown here below the user information -->
+                <asp:Literal ID="LiteralTable" runat="server" />
+            </div>
+        </body>
+
+</asp:Content>

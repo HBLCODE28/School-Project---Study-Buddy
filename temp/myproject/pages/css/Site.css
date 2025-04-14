@@ -1,0 +1,56 @@
+﻿/* עיצוב כללי לדף */
+body {
+    font-family: Arial, sans-serif; /* גופן נקי ומודרני */
+    background-color: #f4f4f6; /* רקע בהיר ונעים */
+    color: #333; /* צבע טקסט נייטרלי */
+    margin: 0;
+    padding: 0;
+}
+
+/* עיצוב כותרת */
+.header {
+    background-color: #fff; /* רקע לבן */
+    color: #00509e; /* צבע טקסט כחול בהיר */
+    padding: 20px;
+    text-align: center; /* טקסט ממורכז */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* צל עדין מתחת לכותרת */
+    border-bottom: 2px solid #ccc; /* קו תחתון להפרדה */
+}
+
+/* עיצוב תפריט ניווט */
+.menu-bar {
+    background-color: #e1e1e1; /* רקע גוון אפור */
+    color: black; /* צבע טקסט שחור */
+    padding: 15px;
+    text-align: center; /* מירכוז תפריט */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* צל לתפריט */
+}
+
+    .menu-bar ul {
+        list-style-type: none; /* הסרת סימני רשימה */
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center; /* מרכוז הפריטים */
+    }
+
+        .menu-bar ul li {
+            padding: 10px 20px; /* ריווח בין הפריטים */
+        }
+
+            .menu-bar ul li a {
+                color: #00509e; /* צבע כחול לקישורים */
+                text-decoration: none; /* הסרת קו תחתון */
+                font-weight: bold; /* גופן מודגש */
+            }
+
+                .menu-bar ul li a:hover {
+                    color: #ffde59; /* צבע צהוב בהיר בעת ריחוף */
+                }
+
+.footer {
+    background-color: #fff; /* רקע לבן */
+    text-align: right; /* טקסט מיושר לימין */
+    padding: 20px; /* ריווח פנימי */
+    border-top: 2px solid #ccc; /* קו עליון להפרדה */
+}
