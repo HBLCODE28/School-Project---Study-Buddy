@@ -26,7 +26,7 @@ namespace Namespace
             int count = 0; // סופר את מספר הטיפים בכל שורה
 
             // מתחילים שורה חדשה
-            tips.Add("<div class='row'>");
+            tips.Add("<div class='row' style='background-color: #c5e2e2; font-family: Monomaniac One, sans-serif; color: #575757;'>");
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -49,9 +49,9 @@ namespace Namespace
 
                             // יצירת HTML דינמי עבור כל טיפ
                             string tipHtml = $@"
-    <div class='col-md-4' >
-        <div class='card mb-4 shadow-sm'>
-            <div class='card-body'>
+    <div class='col-md-4' style='background-color: #c5e2e2;'>
+        <div class='card mb-4 shadow-sm' style='background-color: #2E9797;'>
+            <div class='card-body' style='background-color: #8CC5C5;'>
                 <h5 class='card-title font-weight-bold'>{tipName}</h5>";
 
 
@@ -62,13 +62,14 @@ namespace Namespace
 
                             string userDisplay = string.IsNullOrEmpty(userEmail) ? "Anonymous" : userEmail;
 
-                            tipHtml += $@"
-                                <h6 class='card-subtitle mb-2 text-muted'>By {userDisplay} - {tipDate}</h6>
-                                <p class='card-text' style='color: black;'><strong>Subject:</strong> {tipSubject}</p>
-                                <p class='card-text' style='color: black;'>{tipText}</p>
-                            </div>
-                        </div>
-                    </div>";
+     tipHtml += $@"
+    <h6 class='card-subtitle mb-2 text-muted'  >By {userDisplay} - {tipDate}</h6>
+    <p class='card-text' style='color: black;'><strong>Subject:</strong> {tipSubject}</p>
+    <p class='card-text' style='color: black;'>{tipText}</p>
+</div>
+</div>
+</div>";
+
 
                             tips.Add(tipHtml);
                             count++;

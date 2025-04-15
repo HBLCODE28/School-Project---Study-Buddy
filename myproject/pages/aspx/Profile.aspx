@@ -7,7 +7,7 @@
             <title>User Profile</title>
             <style>
     body {
-        font-family: Arial, sans-serif;
+        font-family: 'Monomaniac One', sans-serif;
         direction: ltr;
         margin: 0;
         padding: 0;
@@ -21,21 +21,21 @@
     #user-details {
         width: 48%;
         padding: 15px;
-        background-color: #f9f9f9;
+        background-color: #c5e2e2;
         border: 1px solid #ddd;
         border-radius: 5px;
     }
     #user-tips {
         width: 48%;
         padding: 15px;
-        background-color: #f9f9f9;
+        background-color: #c5e2e2;
         border: 1px solid #ddd;
         border-radius: 5px;
         max-height: 300px;
         overflow-y: auto;
     }
     h2, h3 {
-        color: #D84040; /* אדום */
+        color: #ff6f61;
     }
     p {
         margin: 10px 0;
@@ -50,11 +50,11 @@
         width: 8px;
     }
     #user-tips::-webkit-scrollbar-thumb {
-        background-color: #888;
+        background-color: #c5e2e2;
         border-radius: 5px;
     }
     #user-tips::-webkit-scrollbar-thumb:hover {
-        background-color: #555;
+        background-color: #c5e2e2;
     }
 </style>
 

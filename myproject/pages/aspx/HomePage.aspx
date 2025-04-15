@@ -31,9 +31,9 @@
         </div>
 
         <!-- Footer Section -->
-        <footer class="bg-light text-center text-lg-start">
+        <footer class="footer">
             <div class="container p-4">
-                <div class="text-center">
+                <div class="text-center" >
                     <p style="color: #ff4c4c;">&copy; <%: DateTime.Now.Year %> - StudyBuddy </p>
                     <p style="color: #ff4c4c;">מי שמאמין לא מתעד#</p>
                 </div>

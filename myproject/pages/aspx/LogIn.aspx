@@ -1,14 +1,14 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="../cs/LogIn.aspx.cs" Inherits="LogIn_namespace.LogIn" MasterPageFile="../Master/Site.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h1 class="text-center my-4">Login</h1>
+    <h1 class="text-center my-4"  ForeColor="#FF6F61">Login</h1>
     <asp:Label ID="errorLabel" runat="server" ForeColor="Red" Visible="False"></asp:Label>
     <link rel="stylesheet" type="text/css" href="/css/Site.css">
 
     <div class="container my-5">
         <!-- Email -->
         <div class="form-floating mb-3">
-            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control slippery-snail" ClientIDMode="Static" placeholder=" " autocomplete="username"/>
+            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control slippery-snail" ForeColor="#FF6F61" ClientIDMode="Static" placeholder=" " autocomplete="username"/>
             <label for="txtEmail">Email</label>
             <asp:Label ID="uEmailError" runat="server" ClientIDMode="Static" CssClass="badge bg-danger text-white mt-1" Text="Email is required." style="display:none;" />
         </div>
@@ -56,18 +56,18 @@
             text-align: center;
         }
 
-        .slippery-snail {
+        /*.slippery-snail {
             position: relative;
             padding: 10px;
             border: 2px solid transparent;
-            background-color: #ffe5e5;
+            background-color: #FFA49C;
             border-radius: 12px;
             transition: all 0.3s ease;
         }
 
         .slippery-snail:hover {
             border-color: #ff0000;
-        }
+        }*/
 
         /* Updated Button Style */
         /*.button {

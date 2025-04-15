@@ -68,19 +68,19 @@
         }
 
         /* עיצוב השדות (input) */
-        .slippery-snail {
+        /*.slippery-snail {
             position: relative;
             padding: 10px;
             border: 2px solid transparent;
-            background-color: #ffe5e5;
+            background-color: #FFA49C;;
             border-radius: 12px;
             transition: all 0.3s ease;
-        }
+        }*/
 
         /* שינוי צבע גבולות השדות בעת ריחוף */
-        .slippery-snail:hover {
+        /*.slippery-snail:hover {
             border-color: #ff0000;
-        }
+        }*/
 
         /* עיצוב כפתור החישוב */
         .button {
@@ -145,7 +145,7 @@
         #question {
             margin: 10px 0;
             padding: 10px;
-            background-color: #ffe5e5;
+            background-color: #FFA49C;;
             border: 2px solid #ffcccc;
             border-radius: 10px;
             width: 80%;
@@ -159,7 +159,7 @@
             padding: 10px;
             border-radius: 10px;
             border: 2px solid #ffcccc;
-            background-color: #ffe5e5;
+            background-color: #FFA49C;;
         }
     </style>
 

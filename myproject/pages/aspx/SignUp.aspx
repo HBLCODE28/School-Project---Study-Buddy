@@ -164,17 +164,17 @@
   padding: 20px;
   text-align: center;
 }
-           .slippery-snail {
+          /* .slippery-snail {
             position: relative;
             padding: 10px;
             border: 2px solid transparent;
-            background-color: #ffe5e5;
+            background-color: #FFA49C;
             border-radius: 12px;
             transition: all 0.3s ease;
         }
         .slippery-snail:hover {
             border-color: #ff0000;
-        }
+        }*/
           
         /* New Input Style */
         .input-wrapper input {

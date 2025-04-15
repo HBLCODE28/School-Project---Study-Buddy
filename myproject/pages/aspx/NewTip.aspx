@@ -77,7 +77,7 @@
 
     <style>
         /* עיצוב הכפתור והקלטים */
-        .slippery-snail {
+        /*.slippery-snail {
             position: relative;
             padding: 10px;
             border: 2px solid transparent;
@@ -88,7 +88,7 @@
 
         .slippery-snail:hover {
             border-color: #ff0000;
-        }
+        }*/
 
         .button {
             cursor: pointer;
