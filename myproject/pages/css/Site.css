@@ -172,3 +172,24 @@ body {
         transform: scale(1);
     }
 
+/* Style for the dropdown menu */
+.dropdown-menu {
+    background-color: #fff; 
+    border-radius: 5px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.dropdown-item {
+    color: #ff6f61 !important; 
+    font-weight: bold; 
+}
+
+    .dropdown-item:hover {
+        background-color: rgba(255, 76, 76, 0.1); 
+        color: #ff6f61 !important; 
+    }
+
+    .dropdown-item:focus {
+        background-color: rgba(255, 76, 76, 0.2);
+        color: #ff6f61 !important;
+    }

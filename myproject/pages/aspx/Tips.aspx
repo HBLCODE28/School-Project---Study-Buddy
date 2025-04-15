@@ -7,7 +7,8 @@
     <div class="album py-5" style="background-color: #ffffff;">
         <div class="container">
 <h2 class="text-center mb-5" style="font-family: 'Monomaniac One', sans-serif; color:#ff6f61;">Tips</h2>
-            <div class="row" id="tips" runat="server">
+<div class="row" id="tips" runat="server" >
+
                 <!-- Dynamic Tip Cards will be added here -->
             </div>
         </div>

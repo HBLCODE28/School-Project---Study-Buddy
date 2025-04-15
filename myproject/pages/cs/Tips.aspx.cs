@@ -50,9 +50,9 @@ namespace Namespace
                             // יצירת HTML דינמי עבור כל טיפ
                             string tipHtml = $@"
     <div class='col-md-4' >
-        <div class='card mb-4 shadow-sm' style='font-family: ''Monomaniac One'', sans-serif; color:#ff6f61;'>
-            <div class='card-body' >
-                <h5 class='card-title font-weight-bold' >{tipName}</h5>";
+        <div class='card mb-4 shadow-sm'>
+            <div class='card-body'>
+                <h5 class='card-title font-weight-bold'>{tipName}</h5>";
 
 
                             if (!string.IsNullOrEmpty(filePath))
