@@ -79,10 +79,12 @@
 </div>--%>
 
 
-            <div id="Div1" runat="server">
-                <!-- The table will be shown here below the user information -->
-                <asp:Literal ID="LiteralTable" runat="server" />
-            </div>
+<div id="admin" runat="server" visible="false">
+        <a href="AdminPage.aspx" class="button">
+            Admin Page
+        </a>
+</div>
+
         </body>
 
 </asp:Content>

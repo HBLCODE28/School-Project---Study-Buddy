@@ -155,12 +155,14 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="images\tipbutton.png" />
     <Content Include="images\homepage.png" />
+    <Content Include="pages\aspx\AdminPage.aspx" />
     <Content Include="pages\aspx\Calculator.aspx" />
     <Content Include="pages\aspx\Clock.aspx" />
     <Content Include="pages\aspx\HomePage.aspx" />
     <Content Include="pages\aspx\LogOut.aspx" />
     <Content Include="pages\aspx\UserTips.aspx" />
     <Content Include="pages\aspx\Tips.aspx" />
+    <Content Include="pages\cs\AdminPage.aspx.cs" />
     <Content Include="pages\cs\HomePage.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Content>

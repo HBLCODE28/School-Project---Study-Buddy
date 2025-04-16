@@ -24,16 +24,19 @@ namespace UserPageNameSpace
                 lblFirstName.InnerText = Session["FirstName"] != null ? Session["FirstName"].ToString() : "";
                 lblLastName.InnerText = Session["LastName"] != null ? Session["LastName"].ToString() : "";
                 lblEmail.InnerText = Session["Email"] != null ? Session["Email"].ToString() : "";
-                LiteralTable.Text = Session["Admin"] != null ? Convert.ToInt32(Session["Admin"]).ToString() : "0";
-
-                if (LiteralTable.Text == "1")
+                //admin.InnerText = Session["Admin"] != null ? Convert.ToInt32(Session["Admin"]).ToString() : "0";
+                if (Session["Admin"] != null && Convert.ToInt32(Session["Admin"]).ToString() == "1")
                 {
-                    showTable();
+                    admin.Visible = true;
                 }
-                else
-                {
-                    LiteralTable.Visible = false;
-                }
+                //if (LiteralTable.Text == "1")
+                //{
+                //    showTable();
+                //}
+                //else
+                //{
+                //    LiteralTable.Visible = false;
+                //}
                // UserTipsLiteral.Text = showUserTips(lblEmail.InnerText);
             }
         }
@@ -160,62 +163,62 @@ namespace UserPageNameSpace
 
 
 
-        public void showTable()
-        {
+        //public void showTable()
+        //{
             
-               string query = "SELECT * FROM users";
+        //       string query = "SELECT * FROM users";
 
-            // Run the query and get the result
-            var queryResult = RunQuery(query, null).result;
+        //    // Run the query and get the result
+        //    var queryResult = RunQuery(query, null).result;
 
-            // Check if the result is not empty
-            if (queryResult != null && queryResult is List<Dictionary<string, object>>)
-            {
-                var listOfDictionaries = queryResult as List<Dictionary<string, object>>;
+        //    // Check if the result is not empty
+        //    if (queryResult != null && queryResult is List<Dictionary<string, object>>)
+        //    {
+        //        var listOfDictionaries = queryResult as List<Dictionary<string, object>>;
 
-                // Table and cell styles
-                string tableStyle = "border-collapse: collapse; width: 100%;";
-                string headerStyle = "background-color: #f2f2f2; font-weight: bold; padding: 8px; border: 1px solid black;";
-                string cellStyle = "padding: 8px; border: 1px solid black; text-align: left;";
+        //        // Table and cell styles
+        //        string tableStyle = "border-collapse: collapse; width: 100%;";
+        //        string headerStyle = "background-color: #f2f2f2; font-weight: bold; padding: 8px; border: 1px solid black;";
+        //        string cellStyle = "padding: 8px; border: 1px solid black; text-align: left;";
 
-                // Start HTML table
-                StringBuilder tableHtml = new StringBuilder();
-                tableHtml.Append("<br><br>Users Table");
-                tableHtml.Append($"<table style='{tableStyle}'>");
+        //        // Start HTML table
+        //        StringBuilder tableHtml = new StringBuilder();
+        //        tableHtml.Append("<br><br>Users Table");
+        //        tableHtml.Append($"<table style='{tableStyle}'>");
 
-                // Print headers
-                if (listOfDictionaries.Count > 0)
-                {
-                    tableHtml.Append("<tr>");
-                    foreach (var header in listOfDictionaries[0].Keys)
-                    {
-                        tableHtml.Append($"<th style='{headerStyle}'>{header}</th>");
-                    }
-                    tableHtml.Append("</tr>");
-                }
+        //        // Print headers
+        //        if (listOfDictionaries.Count > 0)
+        //        {
+        //            tableHtml.Append("<tr>");
+        //            foreach (var header in listOfDictionaries[0].Keys)
+        //            {
+        //                tableHtml.Append($"<th style='{headerStyle}'>{header}</th>");
+        //            }
+        //            tableHtml.Append("</tr>");
+        //        }
 
-                // Print data rows
-                foreach (var dictionary in listOfDictionaries)
-                {
-                    tableHtml.Append("<tr>");
-                    foreach (var kvp in dictionary)
-                    {
-                        tableHtml.Append($"<td style='{cellStyle}'>{kvp.Value}</td>");
-                    }
-                    tableHtml.Append("</tr>");
-                }
+        //        // Print data rows
+        //        foreach (var dictionary in listOfDictionaries)
+        //        {
+        //            tableHtml.Append("<tr>");
+        //            foreach (var kvp in dictionary)
+        //            {
+        //                tableHtml.Append($"<td style='{cellStyle}'>{kvp.Value}</td>");
+        //            }
+        //            tableHtml.Append("</tr>");
+        //        }
 
-                // End HTML table
-                tableHtml.Append("</table>");
+        //        // End HTML table
+        //        tableHtml.Append("</table>");
 
-                // Display the table in the Literal control
-                LiteralTable.Text = tableHtml.ToString();
-            }
-            else
-            {
-                // No results found
-                LiteralTable.Text = "<p>No results found.</p>";
-            }
-        }
+        //        // Display the table in the Literal control
+        //        LiteralTable.Text = tableHtml.ToString();
+        //    }
+        //    else
+        //    {
+        //        // No results found
+        //        LiteralTable.Text = "<p>No results found.</p>";
+        //    }
+        //}
     }
 }
