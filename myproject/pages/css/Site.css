@@ -21,11 +21,13 @@
     background-color: #575757; 
     height: 3px;
     width: 30px; 
+    visibility:visible;
     transition: background-color 0.3s ease; 
 }
 
+
 .navbar-toggler:not(.collapsed) .navbar-toggler-icon {
-    background-color: #f8f9fa;
+    visibility: visible;
 }
 .navbar-nav .nav-item .nav-link {
     color: #ff6f61 !important; /* צבע אדום-פוקסיה */
