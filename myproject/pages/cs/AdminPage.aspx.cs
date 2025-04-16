@@ -89,13 +89,12 @@ namespace AdminPageNameSpace
 
 
 
-     
+
 
 
 
         public void showTable()
         {
-
             string query = "SELECT * FROM users";
 
             // Run the query and get the result
@@ -108,21 +107,24 @@ namespace AdminPageNameSpace
 
                 // Table and cell styles
                 string tableStyle = "border-collapse: collapse; width: 100%;";
-                string headerStyle = "background-color: #f2f2f2; font-weight: bold; padding: 8px; border: 1px solid black;";
+                string headerStyle = "background-color: #f2f2f2; font-weight: bold; padding: 8px; border: 1px solid black; cursor: pointer;";
                 string cellStyle = "padding: 8px; border: 1px solid black; text-align: left;";
 
                 // Start HTML table
                 StringBuilder tableHtml = new StringBuilder();
                 tableHtml.Append("<br><br>Users Table");
-                tableHtml.Append($"<table style='{tableStyle}'>");
+                tableHtml.Append($"<table id='dataTable' style='{tableStyle}'>");
 
                 // Print headers
                 if (listOfDictionaries.Count > 0)
                 {
                     tableHtml.Append("<tr>");
+                    int columnIndex = 0;
                     foreach (var header in listOfDictionaries[0].Keys)
                     {
-                        tableHtml.Append($"<th style='{headerStyle}'>{header}</th>");
+                        // Adding onclick to the header for sorting
+                        tableHtml.Append($"<th style='{headerStyle}' onclick='sortTable({columnIndex}, \"asc\")'>{header}</th>");
+                        columnIndex++;
                     }
                     tableHtml.Append("</tr>");
                 }
@@ -150,5 +152,6 @@ namespace AdminPageNameSpace
                 LiteralTable.Text = "<p>No results found.</p>";
             }
         }
+
     }
 }
