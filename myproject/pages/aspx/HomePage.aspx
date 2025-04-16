@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="../cs/HomePage.aspx.cs" Inherits="Namespace.HomePage" MasterPageFile="../Master/Site.Master" %>
 
 <asp:Content runat="server" ID="Content1" ContentPlaceHolderID="MainContent">
+
     <div class="container mt-5">
         <!-- Welcome Section -->
         <div class="row mt-5 justify-content-center">
