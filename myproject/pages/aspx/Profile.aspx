@@ -11,6 +11,7 @@
         direction: ltr;
         margin: 0;
         padding: 0;
+
     }
     #container {
         display: flex;
@@ -34,15 +35,27 @@
         max-height: 300px;
         overflow-y: auto;
     }
-    h2, h3 {
-        color: #ff6f61;
-    }
-    p {
-        margin: 10px 0;
-        font-size: 14px;
-        color: #FF6666; /* אדום בהיר */
-    }
-    #user-tips p {
+
+
+h2, h3 {
+    color: #ff6f61;
+  /*  text-align: center;
+    margin: 0;   ביטול מרג'ין ברירת מחדל של הדפדפן 
+    display: flex;
+    justify-content: center;   מרכז אופקית 
+    align-items: center;       מרכז אנכית */
+}
+
+p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #FF6666; /* אדום בהיר */
+   /* text-align: center;
+    display: flex;
+    justify-content: center;   מרכז אופקית 
+    align-items: center;       מרכז אנכית */
+}
+/*    #user-tips p {
         font-size: 13px;
         line-height: 1.5;
     }
@@ -55,7 +68,7 @@
     }
     #user-tips::-webkit-scrollbar-thumb:hover {
         background-color: #c5e2e2;
-    }
+    }*/
 </style>
 
         </head>

@@ -34,8 +34,8 @@
     align-items: center;
     height: 100vh;
     text-align: center;
-/*    color: #fcac5c;
-*/    transform: scale(1.7);
+    color: #fca45c;
+    transform: scale(1.7);
     position: absolute; /* משנה את המיקום כדי שהשעון לא יגדל יחד עם הדף */
     top: 50%; /* ממקם את השעון במרכז */
     left: 50%;

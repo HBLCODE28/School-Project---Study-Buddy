@@ -35,13 +35,13 @@ body {
     padding: 0;
 }
 
-#live-clock {
+/*#live-clock {
     font-family: Arial;
-    color: #ff6f61; /* צבע אדום-פוקסיה */
-    font-size: 3rem;
+    color: #ff6f61;*/ /* צבע אדום-פוקסיה */
+    /*font-size: 3rem;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-}
+}*/
 
 .header {
     background-color: #fff; /* לבן */
