@@ -6,10 +6,7 @@ namespace LogOutNameSpace
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-        }
-        protected void btnLogout_Click(object sender, EventArgs e)
-        {
-           // Page.Title = "Log Out";
+            // Page.Title = "Log Out";
             // שחרור משתני הסשן
             Session["UserName"] = null;
             Session["FirstName"] = null;
@@ -19,8 +16,8 @@ namespace LogOutNameSpace
             // סיום הסשן
             Session.Abandon();
 
-            // הפנייה לעמוד אחר, למשל לעמוד התחברות
-            Response.Redirect("Login.aspx");
+            Response.Redirect("../aspx/LogIn.aspx");
         }
+
     }
 }
