@@ -22,9 +22,7 @@ namespace AdminPageNameSpace
                 string firstName = Session["FirstName"] != null ? Session["FirstName"].ToString() : "";
                 string lastName = Session["LastName"] != null ? Session["LastName"].ToString() : "";
                 string email = Session["Email"] != null ? Session["Email"].ToString() : "";
-                string admin = Session["Admin"] != null ? Session["Admin"].ToString() : "";
-
-                if (admin == "1")
+                if (Session["Admin"] != null && Convert.ToInt32(Session["Admin"]).ToString() == "1")
                 {
                     showTable();
                 }
