@@ -16,9 +16,8 @@
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet" />
     
-    <!-- Bootstrap JS (הוספה חשוב של קובץ JS) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script> <!-- Bootstrap JS -->
+
+
     
     <link href="../css/Site.css" rel="stylesheet" type="text/css" />
 
@@ -73,5 +72,8 @@
         <!-- The content of the page will go here -->
         <asp:ContentPlaceHolder id="MainContent" runat="server" />
     </form> <!-- End of the form -->
+        <!-- Bootstrap JS (הוספה חשוב של קובץ JS) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script> <!-- Bootstrap JS -->
 </body>
 </html>
