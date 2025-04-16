@@ -119,7 +119,7 @@ body {
     }
 
     .button:hover::before {
-        transform: scale(3);
+        transform: scale(1.4);
     }
 
     .button:hover {

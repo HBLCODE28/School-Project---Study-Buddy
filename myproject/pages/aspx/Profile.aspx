@@ -66,13 +66,17 @@
                     <p id="username">Username: <span runat="server" id="lblUserName"></span></p>
                     <p id="firstname">First Name: <span runat="server" id="lblFirstName"></span></p>
                     <p id="lastname">Last Name: <span runat="server" id="lblLastName"></span></p>
-                    <p id="email">Email: <span runat="server" id="lblEmail"></span></p>
-                </div>
+                    <p id="email" style="margin-bottom: 20px;">Email: <span runat="server" id="lblEmail"></span></p>
+<a href="UserTips.aspx" class="button" style="inline-size:100px; margin-top: 10px;">
+    Your Tips!
+</a>
 
-         <div id="user-tips" >
+                </div>
+                
+<%--         <div id="user-tips" >
     <h3>User Tips</h3>
     <asp:Literal ID="UserTipsLiteral" runat="server" />
-</div>
+</div>--%>
 
 
             <div id="Div1" runat="server">

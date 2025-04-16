@@ -17,25 +17,15 @@ namespace UserTipsNameSpace
             if (!IsPostBack)
             {
                 // הצגת פרטי המשתמש מהסשן
-                lblUserName.InnerText = Session["UserName"] != null ? Session["UserName"].ToString() : " ";
-                lblFirstName.InnerText = Session["FirstName"] != null ? Session["FirstName"].ToString() : "";
-                lblLastName.InnerText = Session["LastName"] != null ? Session["LastName"].ToString() : "";
-                lblEmail.InnerText = Session["Email"] != null ? Session["Email"].ToString() : "";
-                LiteralTable.Text = Session["Admin"] != null ? Convert.ToInt32(Session["Admin"]).ToString() : "0";
-
-                // אם המשתמש הוא מנהל, הצג את הטבלה
-                if (LiteralTable.Text == "1")
-                {
-                    // ניתן להסיר את הפונקציה showTable אם אינך צריך אותה
-                    // showTable();
-                }
-                else
-                {
-                    LiteralTable.Visible = false;
-                }
+                string userName = Session["UserName"] != null ? Session["UserName"].ToString() : " ";
+                string firstName = Session["FirstName"] != null ? Session["FirstName"].ToString() : "";
+                string lastName = Session["LastName"] != null ? Session["LastName"].ToString() : "";
+                string email = Session["Email"] != null ? Session["Email"].ToString() : "";
+                string script = $"document.getElementById('user-tips').innerText = '{userName} tips';";
+                ClientScript.RegisterStartupScript(this.GetType(), "setText", script, true);
 
                 // הצגת טיפים
-                UserTipsLiteral.Text = showUserTips(lblEmail.InnerText);
+                UserTipsLiteral.Text = showUserTips(email);
             }
         }
 

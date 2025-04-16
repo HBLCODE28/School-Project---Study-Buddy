@@ -34,7 +34,7 @@ namespace UserPageNameSpace
                 {
                     LiteralTable.Visible = false;
                 }
-                UserTipsLiteral.Text = showUserTips(lblEmail.InnerText);
+               // UserTipsLiteral.Text = showUserTips(lblEmail.InnerText);
             }
         }
 
@@ -93,70 +93,70 @@ namespace UserPageNameSpace
 
 
 
-        public string showUserTips(string UserEmail)
-        {
-            string query = "SELECT TipName, TipText, UserEmail, TipDate, TipSubject, TipRelatedFiles FROM tips WHERE UserEmail = @UserEmail ORDER BY TipDate DESC;";
+    //    public string showUserTips(string UserEmail)
+    //    {
+    //        string query = "SELECT TipName, TipText, UserEmail, TipDate, TipSubject, TipRelatedFiles FROM tips WHERE UserEmail = @UserEmail ORDER BY TipDate DESC;";
 
-            string[][] parameters = new string[][] {
-        new string[] { "UserEmail", UserEmail }
-    };
+    //        string[][] parameters = new string[][] {
+    //    new string[] { "UserEmail", UserEmail }
+    //};
 
-            var queryResult = RunQuery(query, parameters);
-            var tips = queryResult.result as List<Dictionary<string, object>>;
-            List<string> tipsHtml = new List<string>();
+    //        var queryResult = RunQuery(query, parameters);
+    //        var tips = queryResult.result as List<Dictionary<string, object>>;
+    //        List<string> tipsHtml = new List<string>();
 
-            try
-            {
-                if (tips != null && tips.Any())
-                {
-                    foreach (var tip in tips)
-                    {
-                        string tipName = tip["TipName"].ToString();
-                        string tipText = tip["TipText"].ToString();
-                        string userEmail = tip["UserEmail"].ToString();
-                        DateTime tipDate = Convert.ToDateTime(tip["TipDate"]);
-                        string tipSubject = tip["TipSubject"].ToString();
-                        string filePath = string.IsNullOrEmpty(tip["TipRelatedFiles"].ToString())
-                                            ? null
-                                            : ResolveUrl("../../Uploads/" + Path.GetFileName(tip["TipRelatedFiles"].ToString()));
+    //        try
+    //        {
+    //            if (tips != null && tips.Any())
+    //            {
+    //                foreach (var tip in tips)
+    //                {
+    //                    string tipName = tip["TipName"].ToString();
+    //                    string tipText = tip["TipText"].ToString();
+    //                    string userEmail = tip["UserEmail"].ToString();
+    //                    DateTime tipDate = Convert.ToDateTime(tip["TipDate"]);
+    //                    string tipSubject = tip["TipSubject"].ToString();
+    //                    string filePath = string.IsNullOrEmpty(tip["TipRelatedFiles"].ToString())
+    //                                        ? null
+    //                                        : ResolveUrl("../../Uploads/" + Path.GetFileName(tip["TipRelatedFiles"].ToString()));
 
-                        // יצירת HTML עבור כל טיפ
-                        string tipHtml = $@"
-                <div class='row'>
-                    <div class='col-md-12'>
-                        <div class='card mb-4 shadow-sm'>
-                            <div class='card-body'>
-                                <h5 class='card-title font-weight-bold'>{tipName}</h5>";
+    //                    // יצירת HTML עבור כל טיפ
+    //                    string tipHtml = $@"
+    //            <div class='row'>
+    //                <div class='col-md-12'>
+    //                    <div class='card mb-4 shadow-sm'>
+    //                        <div class='card-body'>
+    //                            <h5 class='card-title font-weight-bold'>{tipName}</h5>";
 
-                        if (!string.IsNullOrEmpty(filePath))
-                        {
-                            tipHtml += $"<img src='{filePath}' class='card-img-top mt-3' alt='Related image' style='width: 100%; height: auto; object-fit: cover;' />";
-                        }
+    //                    if (!string.IsNullOrEmpty(filePath))
+    //                    {
+    //                        tipHtml += $"<img src='{filePath}' class='card-img-top mt-3' alt='Related image' style='width: 100%; height: auto; object-fit: cover;' />";
+    //                    }
 
-                        tipHtml += $@"
-                                <h6 class='card-subtitle mb-2 text-muted'>By {userEmail} - {tipDate.ToShortDateString()}</h6>
-                                <p class='card-text' style='color: black;'><strong>Subject:</strong> {tipSubject}</p>
-                                <p class='card-text' style='color: black;'>{tipText}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>";
+    //                    tipHtml += $@"
+    //                            <h6 class='card-subtitle mb-2 text-muted'>By {userEmail} - {tipDate.ToShortDateString()}</h6>
+    //                            <p class='card-text' style='color: black;'><strong>Subject:</strong> {tipSubject}</p>
+    //                            <p class='card-text' style='color: black;'>{tipText}</p>
+    //                        </div>
+    //                    </div>
+    //                </div>
+    //            </div>";
 
-                        tipsHtml.Add(tipHtml); // הוספת כל טיפ לרשימה
-                    }
-                }
-                else
-                {
-                    tipsHtml.Add("<p>You haven't posted any tips yet.</p>");
-                }
-            }
-            catch (Exception ex)
-            {
-                tipsHtml.Add($"<p>An error occurred: {ex.Message}</p>");
-            }
+    //                    tipsHtml.Add(tipHtml); // הוספת כל טיפ לרשימה
+    //                }
+    //            }
+    //            else
+    //            {
+    //                tipsHtml.Add("<p>You haven't posted any tips yet.</p>");
+    //            }
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            tipsHtml.Add($"<p>An error occurred: {ex.Message}</p>");
+    //        }
 
-            return string.Join("", tipsHtml); // מצטרף לכל הטיפים
-        }
+    //        return string.Join("", tipsHtml); // מצטרף לכל הטיפים
+    //    }
 
 
 
