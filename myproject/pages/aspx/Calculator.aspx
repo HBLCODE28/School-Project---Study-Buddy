@@ -1,14 +1,13 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/pages/Master/Site.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="server">
     <h1 class="text-center my-4">Calculator</h1>
-<%--    <p class="text-center">Solve Math Questions:</p>--%>
     <link rel="stylesheet" type="text/css" href="/css/Site.css">
 
     <div class="container my-5">
         <!-- Regular Calculator -->
         <div class="left">
             <div id="mathQuestions" class="form-floating mb-3">
-<input type="number" id="firstNumber" class="form-control slippery-snail" placeholder="First number">
+                <input type="number" id="firstNumber" class="form-control slippery-snail" placeholder="First number">
                 <label for="firstNumber">First Number</label>
             </div>
             <div class="form-floating mb-3">
@@ -41,126 +40,106 @@
     </div>
 
     <style>
-        /* הגדרת הקונטיינר שיהיה בתצוגה אנכית */
-        .container {
-            display: flex;
-            flex-direction: row; /* משנה את כיוון הפריסה לאופקי */
-            justify-content: space-between; /* פיזור התפריטים בין הצדדים */
-            padding: 20px;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+/* הגדרת הקונטיינר שיהיה בתצוגה אנכית */
+.container {
+    display: flex;
+    flex-direction: column; /* הפריסה תהיה אנכית */
+    justify-content: center; /* מיישר את התוכן במרכז */
+    align-items: center; /* ממקם את כל התוכן במרכז */
+    padding: 20px;
+    width: 100%;
+    max-width: 600px; /* גודל מקסימלי עבור הקונטיינר */
+    margin: 0 auto;
+}
 
-        /* הגדרת התפריטים כך שיהיו בצדדים שונים */
-        .left, .right {
-            display: flex;
-            flex-direction: column; /* כל אחד יתפוס שורה אחת */
-            width: 48%; /* כל אחד יתפוס 48% מהמרחב */
-        }
+/* כל תפריט יהיה בשורה נפרדת */
+.left, .right {
+    display: flex;
+    flex-direction: column; /* כל אחד יתפוס שורה אחת */
+    width: 100%; /* כל אחד יתפוס את כל רוחב הקונטיינר */
+    margin-bottom: 20px; /* מרווח בין השדות */
+}
 
-        .left {
-            text-align: left;
-        }
+/* עיצוב שדות הקלט (input, select, button) */
+input, select, button {
+    margin: 10px 0;
+    width: 80%; /* רוחב 80% */
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #ffcccc;
+    background-color: #FFA49C;
+}
 
-        .right {
-            text-align: right;
-        }
+/* עיצוב כפתור החישוב */
+.button {
+    cursor: pointer;
+    position: relative;
+    padding: 10px 24px;
+    font-size: 18px;
+    color: lightcoral;
+    border: 2px solid lightcoral;
+    border-radius: 34px;
+    background-color: transparent;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    overflow: hidden;
+}
 
-        /* עיצוב השדות (input) */
-        /*.slippery-snail {
-            position: relative;
-            padding: 10px;
-            border: 2px solid transparent;
-            background-color: #FFA49C;;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }*/
+/* כפתור עם אפקט בעת ריחוף */
+.button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    border-radius: inherit;
+    scale: 0;
+    z-index: -1;
+    background-color: lightcoral;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
 
-        /* שינוי צבע גבולות השדות בעת ריחוף */
-        /*.slippery-snail:hover {
-            border-color: #ff0000;
-        }*/
+/* שינוי אפקט בעת ריחוף על כפתור */
+.button:hover::before {
+    scale: 3;
+}
 
-        /* עיצוב כפתור החישוב */
-        .button {
-            cursor: pointer;
-            position: relative;
-            padding: 10px 24px;
-            font-size: 18px;
-            color: lightcoral;
-            border: 2px solid lightcoral;
-            border-radius: 34px;
-            background-color: transparent;
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-            overflow: hidden;
-        }
+.button:hover {
+    color: #212121;
+    scale: 1.1;
+    box-shadow: 0 0px 20px rgba(255, 102, 102, 0.4);
+}
 
-        /* כפתור עם אפקט בעת ריחוף */
-        .button::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            margin: auto;
-            width: 50px;
-            height: 50px;
-            border-radius: inherit;
-            scale: 0;
-            z-index: -1;
-            background-color: lightcoral;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-        }
+.button:active {
+    scale: 1;
+}
 
-        /* שינוי אפקט בעת ריחוף על כפתור */
-        .button:hover::before {
-            scale: 3;
-        }
+/* עיצוב כותרות ופסקאות */
+h1, p {
+    margin-bottom: 20px; /* רווח בין כותרות לפסקאות */
+    text-align: center;
+}
 
-        .button:hover {
-            color: #212121;
-            scale: 1.1;
-            box-shadow: 0 0px 20px rgba(255, 102, 102, 0.4);
-        }
+/* עיצוב שדה השאלה הרנדומלית */
+#quizSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
 
-        .button:active {
-            scale: 1;
-        }
+#question {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #FFA49C;
+    border: 2px solid #ffcccc;
+    border-radius: 10px;
+    width: 80%;
+    text-align: center;
+}
 
-        /* עיצוב כותרות ופסקאות */
-        h1, p {
-            margin-bottom: 20px; /* רווח בין כותרות לפסקאות */
-            text-align: center;
-        }
-
-        /* עיצוב שדה השאלה הרנדומלית */
-        #quizSection {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        #question {
-            margin: 10px 0;
-            padding: 10px;
-            background-color: #FFA49C;;
-            border: 2px solid #ffcccc;
-            border-radius: 10px;
-            width: 80%;
-            text-align: center;
-        }
-
-        /* הגדרת עיצוב של תיבות input */
-        input, select, button {
-            margin: 10px 0;
-            width: 90%; /* יבטיח שהתיבות יתפסו 90% מהמרחב של הקונטיינר */
-            padding: 10px;
-            border-radius: 10px;
-            border: 2px solid #ffcccc;
-            background-color: #FFA49C;;
-        }
     </style>
 
     <script>
