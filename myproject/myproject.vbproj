@@ -160,6 +160,7 @@
     <Content Include="pages\aspx\Clock.aspx" />
     <Content Include="pages\aspx\HomePage.aspx" />
     <Content Include="pages\aspx\LogOut.aspx" />
+    <Content Include="pages\aspx\MathQuestions.aspx" />
     <Content Include="pages\aspx\UserTips.aspx" />
     <Content Include="pages\aspx\Tips.aspx" />
     <Content Include="pages\cs\AdminPage.aspx.cs" />

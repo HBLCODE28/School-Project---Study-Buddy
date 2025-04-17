@@ -1,11 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/pages/Master/Site.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="server">
-    <h1 class="text-center my-4">Calculator</h1>
+    <h1 class="text-center my-4">Regular Calculator</h1>
     <link rel="stylesheet" type="text/css" href="/css/Site.css">
 
     <div class="container my-5">
         <!-- Regular Calculator -->
-        <div class="left">
+        <div class="calculator-container">
             <div id="mathQuestions" class="form-floating mb-3">
                 <input type="number" id="firstNumber" class="form-control slippery-snail" placeholder="First number">
                 <label for="firstNumber">First Number</label>
@@ -28,166 +28,71 @@
             </div>
         </div>
 
-        <!-- Random Question for the user -->
-        <div class="right">
-            <div id="quizSection" class="form-floating mb-3">
-                <h3>Try to Solve This:</h3>
-                <p id="question" class="form-control slippery-snail" style="text-align: center;"></p>
-                <input type="number" id="answerInput" class="form-control slippery-snail" placeholder="Enter your answer">
-                <button class="button" onclick="checkAnswer()">Submit Answer</button>
-            </div>
+        <div class="text-center mt-3">
+            <a href="/pages/aspx/MathQuestions.aspx" class="button">
+                Math Questions!
+            </a>
         </div>
     </div>
 
     <style>
-/* הגדרת הקונטיינר שיהיה בתצוגה אנכית */
-.container {
-    display: flex;
-    flex-direction: column; /* הפריסה תהיה אנכית */
-    justify-content: center; /* מיישר את התוכן במרכז */
-    align-items: center; /* ממקם את כל התוכן במרכז */
-    padding: 20px;
-    width: 100%;
-    max-width: 600px; /* גודל מקסימלי עבור הקונטיינר */
-    margin: 0 auto;
-}
+    /* הגדרת הקונטיינר שיהיה בתצוגה אנכית */
+    .container {
+        display: flex;
+        flex-direction: column; /* הפריסה תהיה אנכית */
+        justify-content: center; /* מיישר את התוכן במרכז */
+        align-items: center; /* ממקם את כל התוכן במרכז */
+        padding: 20px;
+        width: 100%;
+        max-width: 600px; /* גודל מקסימלי עבור הקונטיינר */
+        margin: 0 auto;
+    }
 
-/* כל תפריט יהיה בשורה נפרדת */
-.left, .right {
-    display: flex;
-    flex-direction: column; /* כל אחד יתפוס שורה אחת */
-    width: 100%; /* כל אחד יתפוס את כל רוחב הקונטיינר */
-    margin-bottom: 20px; /* מרווח בין השדות */
-}
+    /* כל תפריט יהיה בשורה נפרדת */
+    .calculator-container {
+        display: flex;
+        flex-direction: column; /* כל אחד יתפוס שורה אחת */
+        width: 100%; /* כל אחד יתפוס את כל רוחב הקונטיינר */
+        margin-bottom: 20px; /* מרווח בין השדות */
+    }
 
-/* עיצוב שדות הקלט (input, select, button) */
-input, select, button {
-    margin: 10px 0;
-    width: 80%; /* רוחב 80% */
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid #ffcccc;
-    background-color: #FFA49C;
-}
+    /* עיצוב שדות הקלט (input, select, button) */
+    input, select, button {
+        margin: 10px 0;
+        width: 80%; /* רוחב 80% */
+        padding: 10px;
+        border-radius: 10px;
+        border: 2px solid #ffcccc;
+        background-color: #FFA49C;
+    }
 
-/* עיצוב כפתור החישוב */
-.button {
-    cursor: pointer;
-    position: relative;
-    padding: 10px 24px;
-    font-size: 18px;
-    color: lightcoral;
-    border: 2px solid lightcoral;
-    border-radius: 34px;
-    background-color: transparent;
-    font-weight: 600;
-    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-    overflow: hidden;
-}
+    /* עיצוב כותרות ופסקאות */
+    h1, p {
+        margin-bottom: 20px; /* רווח בין כותרות לפסקאות */
+        text-align: center;
+    }
 
-/* כפתור עם אפקט בעת ריחוף */
-.button::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    width: 50px;
-    height: 50px;
-    border-radius: inherit;
-    scale: 0;
-    z-index: -1;
-    background-color: lightcoral;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-}
+    /* עיצוב שדה השאלה הרנדומלית */
+    #quizSection {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
 
-/* שינוי אפקט בעת ריחוף על כפתור */
-.button:hover::before {
-    scale: 3;
-}
-
-.button:hover {
-    color: #212121;
-    scale: 1.1;
-    box-shadow: 0 0px 20px rgba(255, 102, 102, 0.4);
-}
-
-.button:active {
-    scale: 1;
-}
-
-/* עיצוב כותרות ופסקאות */
-h1, p {
-    margin-bottom: 20px; /* רווח בין כותרות לפסקאות */
-    text-align: center;
-}
-
-/* עיצוב שדה השאלה הרנדומלית */
-#quizSection {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-#question {
-    margin: 10px 0;
-    padding: 10px;
-    background-color: #FFA49C;
-    border: 2px solid #ffcccc;
-    border-radius: 10px;
-    width: 80%;
-    text-align: center;
-}
-
+    #question {
+        margin: 10px 0;
+        padding: 10px;
+        background-color: #FFA49C;
+        border: 2px solid #ffcccc;
+        border-radius: 10px;
+        width: 80%;
+        text-align: center;
+    }
     </style>
 
     <script>
-        let attempts = 0;
-        let correctAnswer;
-
-        // Generate random question
-        function generateQuestion() {
-            const num1 = Math.floor(Math.random() * 10) + 1;
-            const num2 = Math.floor(Math.random() * 10) + 1;
-            const operations = ["+", "-", "*"];
-            const operation = operations[Math.floor(Math.random() * operations.length)];
-
-            switch (operation) {
-                case "+":
-                    correctAnswer = num1 + num2;
-                    break;
-                case "-":
-                    correctAnswer = num1 - num2;
-                    break;
-                case "*":
-                    correctAnswer = num1 * num2;
-                    break;
-            }
-
-            document.getElementById("question").textContent = `${num1} ${operation} ${num2} = ?`;
-        }
-
-        // Check the answer entered by the user
-        function checkAnswer() {
-            const userAnswer = parseInt(document.getElementById("answerInput").value);
-
-            if (userAnswer === correctAnswer) {
-                alert("Correct!");
-                attempts = 0;
-                generateQuestion(); // Generate a new question
-            } else {
-                attempts++;
-                if (attempts < 3) {
-                    alert("Try again!");
-                } else {
-                    alert(`The correct answer was: ${correctAnswer}`);
-                    attempts = 0;
-                    generateQuestion(); // Generate a new question
-                }
-            }
-        }
-
         // Regular calculator logic
         function calculate(event) {
             event.preventDefault();
@@ -214,7 +119,5 @@ h1, p {
             }
             alert("Result: " + result);
         }
-
-        window.onload = generateQuestion;
     </script>
 </asp:Content>
