@@ -173,9 +173,9 @@
                     document.getElementById("<%= phone.ClientID %>").value = Math.floor(1000000 + Math.random() * 9000000);
                     document.getElementById("<%= yearBorn.ClientID %>").value = "1990";
                     document.getElementById("<%= prefix.ClientID %>").value = "050";
-            document.getElementById("<%= city.ClientID %>").value = "Tel Aviv";
-            document.getElementById("<%= pw.ClientID %>").value = "password123";
-            document.getElementById("<%= pwConfirm.ClientID %>").value = "password123";
+                    document.getElementById("<%= city.ClientID %>").value = "Tel Aviv";
+                    document.getElementById("<%= pw.ClientID %>").value = "password123";
+                    document.getElementById("<%= pwConfirm.ClientID %>").value = "password123";
 
             // בחירת מגדר (יש להשתמש ב-ClientID כדי לוודא שהשמות נכונים)
             const genderRadios = document.querySelectorAll('input[name="<%= gender.UniqueID %>"]');

@@ -65,6 +65,8 @@
         <!-- File Upload -->
         <div class="form-floating mb-3">
             <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control slippery-snail" />
+            <asp:Label ID="FileUpload1Error" runat="server" CssClass="badge bg-danger text-white mt-1" Text="" style="display:none;"  />
+
         </div>
 
         <!-- Submit Button -->
@@ -149,7 +151,6 @@
     width: auto;             /* התאם את הרוחב לפי הטקסט */
     min-width: 150px;        /* הגדרת רוחב מינימלי שימנע מהתיבה להיות קטנה מדי */
     white-space: normal;     /* מאפשר חיתוך שורות באופן טבעי */
-    font-size: 14px;         /* גודל גופן קריא */
     margin-top: 10px;        /* רווח בין השגיאה לשדה הקודם */
 }
 

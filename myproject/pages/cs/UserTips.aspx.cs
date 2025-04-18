@@ -88,8 +88,8 @@ namespace UserTipsNameSpace
             string query = "SELECT TipName, TipText, UserEmail, TipDate, TipSubject, TipRelatedFiles FROM tips WHERE UserEmail = @UserEmail ORDER BY TipDate DESC;";
 
             string[][] parameters = new string[][] {
-                new string[] { "UserEmail", UserEmail }
-            };
+        new string[] { "UserEmail", UserEmail }
+    };
 
             var queryResult = RunQuery(query, parameters);
             var tips = queryResult.result as List<Dictionary<string, object>>;
@@ -113,25 +113,36 @@ namespace UserTipsNameSpace
                             : ResolveUrl("../../Uploads/" + Path.GetFileName(tip["TipRelatedFiles"].ToString()));
 
                         string tipHtml = $@"
-                            <div class='row'>
-                                <div class='col-md-12'>
-                                    <div class='card mb-4 shadow-sm'>
-                                        <div class='card-body'>
-                                            <h5 class='card-title font-weight-bold'>{tipName}</h5>";
+                    <div class='row'>
+                        <div class='col-md-12'>
+                            <div class='card mb-4 shadow-sm'>
+                                <div class='card-body'>
+                                    <h5 class='card-title font-weight-bold'>{tipName}</h5>";
 
-                        if (!string.IsNullOrEmpty(filePath))  // הצגת תמונה אם יש קובץ מצורף
+                        if (!string.IsNullOrEmpty(filePath))
                         {
-                            tipHtml += $"<img src='{filePath}' class='card-img-top mt-3' alt='Related image' style='width: 100%; height: auto; object-fit: cover;' />";
+                            string fileExtension = Path.GetExtension(filePath).ToLower();
+
+                            // אם מדובר בקובץ PDF
+                            if (fileExtension == ".pdf")
+                            {
+                                tipHtml += $"<a href='{filePath}' target='_blank'>Download pdf </a>";
+                            }
+                            else
+                            {
+                                // הצגת תמונה אם הקובץ הוא לא PDF
+                                tipHtml += $"<img src='{filePath}' class='card-img-top mt-3' alt='Related image' style='width: 100%; height: auto; object-fit: cover;' />";
+                            }
                         }
 
                         tipHtml += $@"
-                                            <h6 class='card-subtitle mb-2 text-muted'>By {userEmail} - {tipDate.ToShortDateString()}</h6>
-                                            <p class='card-text' style='color: black;'><strong>Subject:</strong> {tipSubject}</p>
-                                            <p class='card-text' style='color: black;'>{tipText}</p>
-                                        </div>
-                                    </div>
+                                    <h6 class='card-subtitle mb-2 text-muted'>By {userEmail} - {tipDate.ToShortDateString()}</h6>
+                                    <p class='card-text' style='color: black;'><strong>Subject:</strong> {tipSubject}</p>
+                                    <p class='card-text' style='color: black;'>{tipText}</p>
                                 </div>
-                            </div>";
+                            </div>
+                        </div>
+                    </div>";
 
                         tipsHtml.Add(tipHtml); // הוספת כל טיפ לרשימה
                     }
@@ -148,5 +159,6 @@ namespace UserTipsNameSpace
 
             return string.Join("", tipsHtml); // הצגת כל הטיפים
         }
+
     }
 }

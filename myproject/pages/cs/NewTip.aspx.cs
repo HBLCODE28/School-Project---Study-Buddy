@@ -40,6 +40,16 @@ namespace Namespace
                 if (FileUpload1.HasFile)
                 {
                     filePath = UploadFile();
+                    if (filePath == null)
+                    {
+                        // If the file upload fails (e.g., invalid file type), stop the process
+                        ShowAlert("File upload failed. Please try again with a valid file.");
+                        return;  // Prevent form submission
+                    }
+                    else
+                    {
+                        FileUpload1Error.Style["display"] = "none";
+                    }
                 }
 
                 // Save data to the database
@@ -54,6 +64,7 @@ namespace Namespace
                 ShowAlert("Form validation failed.");
             }
         }
+
 
         private bool ValidateForm(string txtTipName, string txtTipSubject, string txtTipText)
         {
@@ -188,7 +199,7 @@ namespace Namespace
 
         protected string UploadFile()
         {
-            // If there is no file, there's no need to upload
+            // If there is no file to upload, no need to proceed
             if (!FileUpload1.HasFile)
             {
                 return null;
@@ -196,38 +207,64 @@ namespace Namespace
 
             try
             {
-                string extension = Path.GetExtension(FileUpload1.FileName)?.ToLower();
-                if (!IsAllowFiletype(extension))
+                // Get the ContentType of the uploaded file
+                string contentType = FileUpload1.PostedFile.ContentType;
+
+                // Check if the ContentType is allowed
+                if (!IsAllowFiletype(contentType))
                 {
-                    ResultLabel.Text = "File type not allowed.";
+                    
+                    FileUpload1Error.Style["display"] = "block";
+                    FileUpload1Error.Text = "File type not allowed. (allowed types : .pdf,.png,.jpg,.jpeg)";
+
                     return null;
                 }
 
+                // Create the path for the uploads folder
                 string folderPath = Server.MapPath("~/Uploads/");
                 if (!Directory.Exists(folderPath))
                 {
                     Directory.CreateDirectory(folderPath);
                 }
 
-                string filePath = Path.Combine(folderPath, Path.GetFileName(FileUpload1.FileName));
-                FileUpload1.SaveAs(filePath);
-                ResultLabel.Text = "File uploaded successfully!";
-                string fileName = Path.GetFileName(FileUpload1.FileName);
+                string originalFileName = Path.GetFileName(FileUpload1.FileName);
 
-                return fileName;
+                // Create a unique file name (do not use the original file name)
+                string uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(originalFileName);
+                string filePath = Path.Combine(folderPath, uniqueFileName);
+
+                // Save the file
+                FileUpload1.SaveAs(filePath);
+
+
+
+                // Success message for the user
+                //ResultLabel.Text = "File uploaded successfully!";
+                return uniqueFileName;
             }
             catch (Exception ex)
             {
-                ResultLabel.Text = "File upload failed: " + ex.Message;
+                FileUpload1Error.Style["display"] = "block";
+                FileUpload1Error.Text = "File upload failed. Please try again later.";
                 return null;
             }
         }
 
-        private bool IsAllowFiletype(string extension)
+        private bool IsAllowFiletype(string contentType)
         {
-            var allowedExtensions = new List<string> { ".zip", ".rar", ".pdf", ".png", ".jpg", ".jpeg", ".gif" };
-            return allowedExtensions.Contains(extension);
+            var allowedContentTypes = new List<string>
+    {
+        "application/pdf",  // .pdf
+        "image/png",  // .png
+        "image/jpeg",  // .jpg, .jpeg
+    };
+
+            return allowedContentTypes.Contains(contentType);
         }
+
+
+
+
 
         private void ShowAlert(string message)
         {
