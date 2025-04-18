@@ -97,14 +97,16 @@
 
        <!-- Hobbies -->
 <div class="form-field mb-3">
-    <label class="form-label">Hobbies:</label>
-    <asp:CheckBoxList ID="hobbies" runat="server" CssClass="custom-checkbox-list slippery-snail" ClientIDMode="Static">
-        <asp:ListItem Text="Reading" Value="Reading" />
-        <asp:ListItem Text="Traveling" Value="Traveling" />
-        <asp:ListItem Text="Sports" Value="Sports" />
-        <asp:ListItem Text="Music" Value="Music" />
-        <asp:ListItem Text="Cooking" Value="Cooking" />
-    </asp:CheckBoxList>
+    <label class="form-label">Hobbies</label>
+<asp:CheckBoxList ID="hobbies" runat="server" CssClass="form-check-input slippery-snail" ClientIDMode="Static" RepeatDirection="Horizontal">
+    <asp:ListItem Text=" Reading "  Value="Reading" CssClass="form-check-input" />
+    <asp:ListItem Text=" Traveling " Value="Traveling" CssClass="form-check-input" />
+    <asp:ListItem Text=" Sports"   Value="Sports" CssClass="form-check-input" />
+    <asp:ListItem Text=" Music "  Value="Music" CssClass="form-check-input" />
+    <asp:ListItem Text=" Cooking " Value="Cooking" CssClass="form-check-input" />
+</asp:CheckBoxList>
+
+
     <asp:Label ID="hobbiesError" runat="server" CssClass="badge bg-danger text-white mt-1" ClientIDMode="Static" style="display:none;" Text="Please select at least one hobby." />
 </div>
 
@@ -141,87 +143,20 @@
     </div>
 
     <style>
-        /* עיצוב לכפתור הצגת/הסתרת סיסמה */
-
-        .container {
-  max-width: 400px;
-  margin: auto;
-  padding: 20px;
-  text-align: center;
-}
-          /* .slippery-snail {
-            position: relative;
-            padding: 10px;
-            border: 2px solid transparent;
-            background-color: #FFA49C;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-        .slippery-snail:hover {
-            border-color: #ff0000;
-        }*/
-          
-        /* New Input Style */
-        .input-wrapper input {
-            background-color: #eee;
-            border: none;
-            padding: 1rem;
-            font-size: 1rem;
-            width: 13em;
-            border-radius: 1rem;
-            color: lightcoral;
-            box-shadow: 0 0.4rem #dfd9d9;
-            cursor: pointer;
-        }
-
-        .input-wrapper input:focus {
-            outline-color: lightcoral;
-        }
-
-        /* Updated Button Style */
-        /*.button {
-            cursor: pointer;
-            position: relative;
-            padding: 10px 24px;
-            font-size: 18px;
-            color: lightcoral;
-            border: 2px solid lightcoral;
-            border-radius: 34px;
-            background-color: transparent;
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-            overflow: hidden;
-        }
-
-        .button::before {
-            content: '';
-            position: absolute;
-            inset: 0;
+ .container {
+            max-width: 400px;
             margin: auto;
-            width: 50px;
-            height: 50px;
-            border-radius: inherit;
-            scale: 0;
-            z-index: -1;
-            background-color: lightcoral;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+            padding: 20px;
+            text-align: center;
         }
 
-        .button:hover::before {
-            scale: 3;
-        }
 
-        .button:hover {
-            color: #212121;
-            scale: 1.1;
-            box-shadow: 0 0px 20px rgba(255, 102, 102, 0.4);
-        }
+ #hobbies {
+    margin-right: 10px;
+    padding-right: 5px;
+}
 
-        .button:active {
-            scale: 1;
-        }*/
-    
-       
+
     </style>
 
     <script type="text/javascript">

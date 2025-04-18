@@ -4,7 +4,7 @@
 
 .password-toggle {
     position: absolute;
-    right: 12px;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
@@ -184,19 +184,48 @@ body {
         background-color: rgba(255, 76, 76, 0.2);
         color: #ff6f61 !important; /* צבע אדום-פוקסיה */
     }
-
+/*.slippery-snail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}*/
+/* תכנון עבור הקונטיינר של ה-CheckBoxList */
 .slippery-snail {
-    position: relative;
     padding: 10px;
     border: 2px solid transparent;
     background-color: #FFA49C;
     border-radius: 12px;
     transition: all 0.3s ease;
+    text-align: center; /* מרכז את התוכן בתוך הקונטיינר */
 }
 
+    /* שינוי צבע הגבולות בעת ריחוף */
     .slippery-snail:hover {
         border-color: #ff0000;
     }
+
+.form-check-input {
+    margin-right: 60px !important;
+    margin-left: 60px !important;
+}
+
+
+
+/* הוספת רווח נוסף בין תיבת הסימון לטקסט */
+/*.slippery-snail .form-check-label {
+    margin-right: 20px;*/ /* רווח נוסף בין תיבת הסימון לטקסט */
+    /*margin-left: 10px;*/ /* הוספת רווח גם בצד שמאל של הטקסט */
+/*}*/
+
+/* הוספת רווח בטקסט עצמו */
+/*.slippery-snail .form-check-label {
+    padding-left: 10px;
+    padding-right: 10px; 
+}*/
+
+
 h2 {
     font-family: 'Monomaniac One', sans-serif;
     color: #ff6f61; /* צבע אדום-פוקסיה */
