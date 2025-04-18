@@ -72,7 +72,7 @@
                 var form = document.forms[0];
                 form.submit(); // שלח את הטופס
             } else {
-                console.error("ה-Select לא נמצא בדף.");
+                console.error("Not Found");
             }
         }
     </script>
