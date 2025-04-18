@@ -142,21 +142,6 @@
 
     <style>
         /* עיצוב לכפתור הצגת/הסתרת סיסמה */
-.password-toggle {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  background: none;
-  border: none;
-  color: #ff6666;
-  font-size: 1.2em;
-}
-
-.password-toggle:hover {
-  color: #cc0000;
-}
 
         .container {
   max-width: 400px;
@@ -194,7 +179,7 @@
         }
 
         /* Updated Button Style */
-        .button {
+        /*.button {
             cursor: pointer;
             position: relative;
             padding: 10px 24px;
@@ -234,7 +219,7 @@
 
         .button:active {
             scale: 1;
-        }
+        }*/
     
        
     </style>

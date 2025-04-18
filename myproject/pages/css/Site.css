@@ -1,4 +1,24 @@
-﻿.navbar {
+﻿.badge {
+    font-weight: normal !important;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #ff6666;
+    font-size: 1.2em;
+}
+
+    .password-toggle:hover {
+        color: #cc0000;
+    }
+
+.navbar {
     background-color: #2e9797; /* צבע טורקיז כהה */
     padding: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -130,7 +150,7 @@ body {
     }
 
     .button:hover::before {
-        transform: scale(1.4);
+        transform: scale(1.0);
     }
 
     .button:hover {

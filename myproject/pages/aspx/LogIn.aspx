@@ -33,7 +33,7 @@
 
     <style>
         /* עיצוב לכפתור הצגת/הסתרת סיסמה */
-        .password-toggle {
+      /*  .password-toggle {
             position: absolute;
             right: 12px;
             top: 50%;
@@ -47,7 +47,7 @@
 
         .password-toggle:hover {
             color: #cc0000;
-        }
+        }*/
 
         .container {
             max-width: 400px;
