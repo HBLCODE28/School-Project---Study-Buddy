@@ -211,13 +211,35 @@
             });
         }
     }
-
+    
     // קריאה לפונקציה עבור שדות הסיסמה והאימות
             togglePasswordVisibility("togglePw", "<%= pw.ClientID %>");
             togglePasswordVisibility("togglePwConfirm", "<%= pwConfirm.ClientID %>");
 
         });
+        // Function to check if passwords match and show error
+        function checkPasswordMatch() {
+            const password = document.getElementById('<%= pw.ClientID %>');
+    const confirmPassword = document.getElementById('<%= pwConfirm.ClientID %>');
+    const pwConfirmError = document.getElementById('<%= pwConfirmError.ClientID %>');
 
+    if (password.value !== confirmPassword.value) {
+        pwConfirmError.style.display = 'block';  // Show error if passwords don't match
+    } else {
+        pwConfirmError.style.display = 'none';  // Hide error if passwords match
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Add event listeners for password and confirm password fields
+    const password = document.getElementById('<%= pw.ClientID %>');
+    const confirmPassword = document.getElementById('<%= pwConfirm.ClientID %>');
+
+    if (password && confirmPassword) {
+        password.addEventListener('input', checkPasswordMatch);  // Check password match when password is changed
+        confirmPassword.addEventListener('input', checkPasswordMatch);  // Check password match when confirm password is changed
+    }
+});
 
     </script>
 
