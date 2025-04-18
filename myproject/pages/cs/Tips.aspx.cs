@@ -13,25 +13,52 @@ namespace Namespace
         {
             if (!IsPostBack)
             {
-               // Page.Title = "Discover Tips";
-
                 LoadTips();
+            }
+            else
+            {
+                string sortOrder = Request.Form["sortOrder"]; // Capture the sorting parameter from the hidden field
+
+                string orderByClause = "ORDER BY TipSubject ASC"; // Default sorting by TipSubject ascending
+
+                // Additional sorting logic based on the selected value from the dropdown
+                if (!string.IsNullOrEmpty(sortOrder) && sortOrder != "0")
+                {
+                    // Example logic for sorting by the selected subject (you can customize further)
+                    switch (sortOrder)
+                    {
+                        case "1":
+                            orderByClause = "ORDER BY TipSubject ASC"; // Biology
+                            break;
+                        case "2":
+                            orderByClause = "ORDER BY TipSubject ASC"; // Chemistry
+                            break;
+                            // Add more cases as needed
+                    }
+                }
+
+                string query = "SELECT TipName, TipText, UserEmail, TipDate, TipSubject, TipRelatedFiles FROM tips " + orderByClause;
+                LoadTips(query);
             }
         }
 
-        private void LoadTips()
+        private void LoadTips(string query = null)
         {
             string connectionString = @"Data Source=HBL\SQLEXPRESS;Initial Catalog=demotasks_4389;Integrated Security=True;";
             List<string> tips = new List<string>();
-            int count = 0; // סופר את מספר הטיפים בכל שורה
+            int count = 0;
 
-            // מתחילים שורה חדשה
             tips.Add("<div class='row' style='background-color: #c5e2e2; font-family: Monomaniac One, sans-serif; color: #575757;'>");
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string query = "SELECT TipName, TipText, UserEmail, TipDate, TipSubject, TipRelatedFiles FROM tips ORDER BY TipDate DESC";
+
+                if (query == null)
+                {
+                    query = "SELECT TipName, TipText, UserEmail, TipDate, TipSubject, TipRelatedFiles FROM tips ORDER BY TipSubject ASC";
+                }
+
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -47,7 +74,6 @@ namespace Namespace
                                 ? null
                                 : ResolveUrl("../../Uploads/" + Path.GetFileName(reader["TipRelatedFiles"].ToString()));
 
-                            // יצירת HTML דינמי עבור כל טיפ
                             string tipHtml = $@"
 <div class='col-md-4' style='background-color: #c5e2e2;'>
     <div class='card mb-4 shadow-sm' style='background-color: #2E9797;'>
@@ -58,7 +84,6 @@ namespace Namespace
                             {
                                 string fileExtension = Path.GetExtension(filePath).ToLower();
 
-                                // אם מדובר בקובץ PDF
                                 if (fileExtension == ".pdf")
                                 {
                                     tipHtml += $"<a href='{filePath}' target='_blank'>Download pdf </a>";
@@ -82,35 +107,30 @@ namespace Namespace
                             tips.Add(tipHtml);
                             count++;
 
-                            // אחרי כל 3 טיפים, סוגרים את השורה ומתחילים חדשה
                             if (count == 3)
                             {
                                 tips.Add("</div><div class='row'>");
-                                count = 0; // מאפס את הסופר
+                                count = 0;
                             }
                         }
                     }
                 }
             }
 
-            // אם נשאר טיפ פחות מ-3 לאחר הלולאה, סוגרים את השורה
             if (count > 0)
             {
                 tips.Add("</div>");
             }
 
-            // הוספת כל הטיפים ל-TipsContainer
-            HtmlGenericControl tipsContainer = (HtmlGenericControl)FindControl("tipsContainer");
+            HtmlGenericControl tipsContainer = (HtmlGenericControl)FindControl("tips");
             if (tipsContainer == null)
             {
                 tipsContainer = new HtmlGenericControl("div");
-                tipsContainer.ID = "tipsContainer";
+                tipsContainer.ID = "tips";
                 this.Controls.Add(tipsContainer);
             }
 
             tipsContainer.InnerHtml = string.Join("", tips);
         }
-
-
     }
 }

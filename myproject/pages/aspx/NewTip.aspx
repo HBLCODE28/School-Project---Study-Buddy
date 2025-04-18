@@ -45,6 +45,8 @@
                 <asp:ListItem Text="History" Value="History" />
                 <asp:ListItem Text="Literature" Value="Literature" />
                 <asp:ListItem Text="Art History" Value="ArtHistory" />
+                <asp:ListItem Text="Art" Value="Art" />
+                <asp:ListItem Text="Music" Value="Music" />
                 <asp:ListItem Text="Law" Value="Law" />
                 <asp:ListItem Text="Business Studies" Value="BusinessStudies" />
                 <asp:ListItem Text="Education" Value="Education" />
