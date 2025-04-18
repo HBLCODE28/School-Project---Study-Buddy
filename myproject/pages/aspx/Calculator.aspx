@@ -5,8 +5,8 @@
 
     <div class="container my-5">
         <!-- Regular Calculator -->
-        <div class="calculator-container">
-            <div id="mathQuestions" class="form-floating mb-3">
+        <div class="calculator-container" >
+            <div id="mathQuestions" class="form-floating mb-3" >
                 <input type="number" id="firstNumber" class="form-control slippery-snail" placeholder="First number">
                 <label for="firstNumber">First Number</label>
             </div>
@@ -20,7 +20,7 @@
                 <label for="operation">Operation</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="number" id="secondNumber" class="form-control slippery-snail" placeholder="Second number" >
+                <input type="number" id="secondNumber" class="form-control slippery-snail" placeholder="Second number">
                 <label for="secondNumber">Second Number</label>
             </div>
             <div class="text-center mt-3">
@@ -36,60 +36,39 @@
     </div>
 
     <style>
-    /* הגדרת הקונטיינר שיהיה בתצוגה אנכית */
-    .container {
-        display: flex;
-        flex-direction: column; /* הפריסה תהיה אנכית */
-        justify-content: center; /* מיישר את התוכן במרכז */
-        align-items: center; /* ממקם את כל התוכן במרכז */
-        padding: 20px;
-        width: 100%;
-        max-width: 600px; /* גודל מקסימלי עבור הקונטיינר */
-        margin: 0 auto;
-    }
+   /* הגדרת הקונטיינר שיהיה בתצוגה אנכית */
+.container {
+    display: flex;
+    flex-direction: column; /* הפריסה תהיה אנכית */
+    justify-content: center; /* מיישר את התוכן במרכז */
+    align-items: center; /* ממקם את כל התוכן במרכז */
+    padding: 20px;
+    width: 100%;
+    max-width: 600px; /* גודל מקסימלי עבור הקונטיינר */
+    margin: 0 auto;
+}
 
-    /* כל תפריט יהיה בשורה נפרדת */
-    .calculator-container {
-        display: flex;
-        flex-direction: column; /* כל אחד יתפוס שורה אחת */
-        width: 100%; /* כל אחד יתפוס את כל רוחב הקונטיינר */
-        margin-bottom: 20px; /* מרווח בין השדות */
-    }
 
-    /* עיצוב שדות הקלט (input, select, button) */
-    input, select, button {
-        margin: 10px 0;
-        width: 80%; /* רוחב 80% */
-        padding: 10px;
-        border-radius: 10px;
-        border: 2px solid #ffcccc;
-        background-color: #FFA49C;
-    }
 
-    /* עיצוב כותרות ופסקאות */
-    h1, p {
-        margin-bottom: 20px; /* רווח בין כותרות לפסקאות */
-        text-align: center;
-    }
+input, select {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #ffcccc;
+    background-color: #FFA49C;
+    box-sizing: border-box; /* כדי להבטיח שה-padding נלקח בחשבון ברוחב */
+    height: 50px; /* גובה קבוע */
+    width: 60%; /* רוחב 60% */
 
-    /* עיצוב שדה השאלה הרנדומלית */
-    #quizSection {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-    }
+/* עיצוב כותרות ופסקאות */
+input, h1, p {
+    margin-bottom: 20px; /* רווח בין כותרות לפסקאות */
+    text-align: center;
+}
 
-    #question {
-        margin: 10px 0;
-        padding: 10px;
-        background-color: #FFA49C;
-        border: 2px solid #ffcccc;
-        border-radius: 10px;
-        width: 80%;
-        text-align: center;
-    }
+
+
+
     </style>
 
     <script>

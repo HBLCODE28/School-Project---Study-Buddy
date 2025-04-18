@@ -8,8 +8,8 @@
         <div class="right">
             <div id="quizSection" class="form-floating mb-3">
                 <h3>Try to Solve This:</h3>
-                <p id="question" class="form-control slippery-snail" style="text-align: center;"></p>
-                <input type="number" id="answerInput" class="form-control slippery-snail" placeholder="Enter your answer">
+                <p id="question" class="input form-control slippery-snail" style="text-align: center;"></p>
+                <input type="number" id="answerInput" class=" input form-control slippery-snail" placeholder="Enter your answer">
                 <button class="button" onclick="checkAnswer()">Submit Answer</button>
             </div>
         </div>
@@ -17,8 +17,7 @@
                       Regular Calculator!
                     </a>
     </div>
-
-    <style>
+<style>
 /* הגדרת הקונטיינר שיהיה בתצוגה אנכית */
 .container {
     display: flex;
@@ -39,38 +38,19 @@
     margin-bottom: 20px; /* מרווח בין השדות */
 }
 
-/* עיצוב שדות הקלט (input, select, button) */
-input, select, button {
+input, select {
     margin: 10px 0;
-    width: 60%; /* רוחב 60% */
     padding: 10px;
     border-radius: 10px;
     border: 2px solid #ffcccc;
     background-color: #FFA49C;
     box-sizing: border-box; /* כדי להבטיח שה-padding נלקח בחשבון ברוחב */
     height: 50px; /* גובה קבוע */
-}
-input
-{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-margin-top: 20px;
-margin: 10px 0;
-padding: 10px;
-background-color: #FFA49C;
-border: 2px solid #ffcccc;
-border-radius: 10px;
-width: 60%; /* רוחב 60% */
-height: auto; /* הוסר הגובה הקבוע */
-text-align: center;
-box-sizing: border-box; /* כדי להבטיח שה-padding נלקח בחשבון ברוחב */
-
+    width: 60%; /* רוחב 60% */
 }
 
 /* עיצוב כותרות ופסקאות */
-h1, p {
+input, h1, p {
     margin-bottom: 20px; /* רווח בין כותרות לפסקאות */
     text-align: center;
 }
@@ -84,6 +64,20 @@ h1, p {
     margin-top: 20px;
 }
 
+/* עיצוב השאלה והתשובה (שני השדות יהיו בעלי אותו רוחב) */
+#question, #answerInput {
+    width: 60%; /* רוחב אחיד של 60% */
+    height: 50px; /* גובה אחיד */
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #FFA49C;
+    border: 2px solid #ffcccc;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box; /* כדי להבטיח שה-padding נלקח בחשבון ברוחב */
+}
+
+/* עיצוב כותרת השאלה */
 #question {
     margin: 10px 0;
     padding: 10px;
@@ -96,8 +90,8 @@ h1, p {
     box-sizing: border-box; /* כדי להבטיח שה-padding נלקח בחשבון ברוחב */
 }
 
+</style>
 
-    </style>
 
     <script>
         let attempts = 0;
