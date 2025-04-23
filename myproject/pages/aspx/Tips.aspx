@@ -7,76 +7,67 @@
     <div class="album py-5" style="background-color: #c5e2e2;">
         <div class="container">
             <h2 class="text-center mb-5" style="font-family: 'Monomaniac One', sans-serif; color:#ff6f61;">Tips</h2>
+
+            <!-- Dropdown for client-side filtering -->
+            <label for="subjectFilter">Filter by Subject:</label>
+            <select id="subjectFilter" class="form-control mb-4">
+                <option value="all">All Subjects</option>
+                <option value="Biology">Biology</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Physics">Physics</option>
+                <option value="Geography">Geography</option>
+                <option value="Environmental Science">Environmental Science</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Software Engineering">Software Engineering</option>
+                <option value="Information Systems">Information Systems</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Statistics">Statistics</option>
+                <option value="Psychology">Psychology</option>
+                <option value="Sociology">Sociology</option>
+                <option value="Political Science">Political Science</option>
+                <option value="Economics">Economics</option>
+                <option value="Anthropology">Anthropology</option>
+                <option value="English">English</option>
+                <option value="Spanish">Spanish</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Hebrew">Hebrew</option>
+                <option value="Arabic">Arabic</option>
+                <option value="Philosophy">Philosophy</option>
+                <option value="History">History</option>
+                <option value="Literature">Literature</option>
+                <option value="Art History">Art History</option>
+                <option value="Art">Art</option>
+                <option value="Music">Music</option>
+                <option value="Law">Law</option>
+                <option value="Business Studies">Business Studies</option>
+                <option value="Education">Education</option>
+                <option value="Medicine">Medicine</option>
+                <option value="Nursing">Nursing</option>
+                <option value="Engineering">Engineering</option>
+            </select>
+
             <div class="row" id="tips" runat="server">
-                <!-- Dynamic Tip Cards will be added here -->
+                <!-- Dynamic Tip Cards will be rendered here -->
             </div>
         </div>
-        
-        <!-- Dropdown for selecting sort order -->
-        <label for="sort">Sort By:</label><br />
-        <select id="sort" runat="server">
-            <option value="0">Nothing</option>
-            <option value="1">Biology</option>
-            <option value="2">Chemistry</option>
-            <option value="3">Physics</option>
-            <option value="4">Geography</option>
-            <option value="5">Environmental Science</option>
-            <option value="6">Computer Science</option>
-            <option value="7">Software Engineering</option>
-            <option value="8">Information Systems</option>
-            <option value="9">Mathematics</option>
-            <option value="10">Statistics</option>
-            <option value="11">Psychology</option>
-            <option value="12">Sociology</option>
-            <option value="13">Political Science</option>
-            <option value="14">Economics</option>
-            <option value="15">Anthropology</option>
-            <option value="16">English</option>
-            <option value="17">Spanish</option>
-            <option value="18">French</option>
-            <option value="19">German</option>
-            <option value="20">Chinese</option>
-            <option value="21">Hebrew</option>
-            <option value="22">Arabic</option>
-            <option value="23">Philosophy</option>
-            <option value="24">History</option>
-            <option value="25">Literature</option>
-            <option value="26">Art History</option>
-            <option value="27">Art</option>
-            <option value="28">Music</option>
-            <option value="29">Law</option>
-            <option value="30">Business Studies</option>
-            <option value="31">Education</option>
-            <option value="32">Medicine</option>
-            <option value="33">Nursing</option>
-            <option value="34">Engineering</option>
-        </select>
-
-        <!-- Button to trigger sorting -->
-        <button onclick="sortSubjects()" class="button">Sort</button>
     </div>
 
+    <!-- JavaScript for filtering tips by subject -->
     <script>
-        function sortSubjects() {
-            var select = document.getElementById('<%= sort.ClientID %>'); // השתמש ב-ClientID של ASP.NET
-            if (select) {  // אם ה- select קיים
-                var selectedValue = select.value;
+        document.addEventListener("DOMContentLoaded", function () {
+            const filter = document.getElementById("subjectFilter");
+            filter.addEventListener("change", function () {
+                const selected = this.value.trim().toLowerCase(); // להבטיח שאין רווחים
+                const cards = document.querySelectorAll(".tip-card");
 
-                // ווידוא שקיים HiddenField
-                var hiddenField = document.getElementById('<%= sortOrder.ClientID %>');
-                if (hiddenField) {
-                    hiddenField.value = selectedValue; // שמור את הערך ב-HiddenField
-                }
+                cards.forEach(card => {
+                    const subject = card.getAttribute("data-subject").trim().toLowerCase();
+                    card.style.display = (selected === "all" || subject === selected) ? "block" : "none";
+                });
+            });
+        });
 
-                // שלח את הטופס כדי להפעיל את ה-PostBack
-                var form = document.forms[0];
-                form.submit(); // שלח את הטופס
-            } else {
-                console.error("Not Found");
-            }
-        }
     </script>
-
-    <!-- Hidden field to store the selected value and send it on postback -->
-    <asp:HiddenField ID="sortOrder" runat="server" />
 </asp:Content>
