@@ -10,7 +10,7 @@
 
             <!-- Dropdown for client-side filtering -->
             <label for="subjectFilter">Sort Tips by Subject:</label>
-            <select id="subjectFilter" class="form-control mb-4">
+            <select id="subjectFilter" class="dropdown-menu4">
                 <option value="all">All Subjects</option>
                 <option value="Biology">Biology</option>
                 <option value="Chemistry">Chemistry</option>
@@ -49,9 +49,9 @@
             </select>
 
             <!-- Dropdown for client-side filtering -->
-            <label for="timeFilter">Sort Tips by Date:</label>
-<select id="timeFilter" class="form-control mb-4">
-    <option value="all">All Tips</option>
+            <label for="timeFilter" style="margin: 20px;">Sort Tips by Date:</label>
+<select id="timeFilter" class="dropdown-menu4" style="margin: -20px;" >
+    <option value="all" >All Tips</option>
     <option value="Newest">Newest First</option>
     <option value="Oldest">Oldest First</option>
 </select>
