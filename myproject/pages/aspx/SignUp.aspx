@@ -97,13 +97,13 @@
 
        <!-- Hobbies -->
 <div class="form-field mb-3">
-    <label class="form-label">Hobbies</label>
+    <label class="form-label"  >Hobbies</label>
 <asp:CheckBoxList ID="hobbies" runat="server" CssClass="form-check-input slippery-snail" ClientIDMode="Static" RepeatDirection="Horizontal">
-    <asp:ListItem Text=" Reading "  Value="Reading" CssClass="form-check-input" />
-    <asp:ListItem Text=" Traveling " Value="Traveling" CssClass="form-check-input" />
-    <asp:ListItem Text=" Sports"   Value="Sports" CssClass="form-check-input" />
-    <asp:ListItem Text=" Music "  Value="Music" CssClass="form-check-input" />
-    <asp:ListItem Text=" Cooking " Value="Cooking" CssClass="form-check-input" />
+    <asp:ListItem Text=" Reading "  Value="Reading" CssClass="form-check-input" style="margin: 5px;" />
+    <asp:ListItem Text=" Traveling " Value="Traveling" CssClass="form-check-input" style="margin: 5px;" />
+    <asp:ListItem Text=" Sports"   Value="Sports" CssClass="form-check-input" style="margin: 5px;" />
+    <asp:ListItem Text=" Music "  Value="Music" CssClass="form-check-input" style="margin: 5px;" />
+    <asp:ListItem Text=" Cooking " Value="Cooking" CssClass="form-check-input" style="margin: 5px;" />
 </asp:CheckBoxList>
 
 
