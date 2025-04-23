@@ -17,19 +17,19 @@ namespace Namespace
             }
         }
 
-        private void LoadTips()
+        protected void LoadTips()
         {
             string connectionString = @"Data Source=HBL\SQLEXPRESS;Initial Catalog=demotasks_4389;Integrated Security=True;";
             List<string> tips = new List<string>();
             int count = 0;
 
-            tips.Add("<div class='row' style='background-color: #c5e2e2; font-family: Monomaniac One, sans-serif; color: #575757;'>");
+            //tips.Add("<div class='row' style='background-color: #c5e2e2; font-family: Monomaniac One, sans-serif; color: #575757;'>");
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
-                string query = "SELECT TipName, TipText, UserEmail, TipDate, TipSubject, TipRelatedFiles FROM tips ORDER BY TipDate DESC";
+                string query = "SELECT TipName, TipText, UserEmail, TipDate, TipSubject, TipRelatedFiles FROM tips ";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -47,7 +47,7 @@ namespace Namespace
                                 : ResolveUrl("../../Uploads/" + Path.GetFileName(reader["TipRelatedFiles"].ToString()));
 
                             string tipHtml = $@"
-<div class='col-md-4 tip-card' data-subject='{tipSubject}' style='background-color: #c5e2e2;'>
+<div class='col-md-4 tip-card' data-date='{tipDate:yyyy-MM-dd}' data-subject='{tipSubject}' style='background-color: #c5e2e2;'>
     <div class='card mb-4 shadow-sm' style='background-color: #2E9797;'>
         <div class='card-body' style='background-color: #8CC5C5;'>
             <h5 class='card-title font-weight-bold'>{tipName}</h5>";
@@ -79,30 +79,23 @@ namespace Namespace
                             tips.Add(tipHtml);
                             count++;
 
-                            if (count == 3)
-                            {
-                                tips.Add("</div><div class='row' style='background-color: #c5e2e2;'>");
-                                count = 0;
-                            }
+                            //if (count == 3)
+                            //{
+                            //    tips.Add("</div><div class='row' style='background-color: #c5e2e2;'>");
+                            //    count = 0;
+                            //}
                         }
                     }
                 }
             }
 
-            if (count > 0)
-            {
-                tips.Add("</div>");
-            }
-
-            HtmlGenericControl tipsContainer = (HtmlGenericControl)FindControl("tips");
-            if (tipsContainer == null)
-            {
-                tipsContainer = new HtmlGenericControl("div");
-                tipsContainer.ID = "tips";
-                this.Controls.Add(tipsContainer);
-            }
+            //if (count > 0)
+            //{
+            //    tips.Add("</div>");
+            //}
 
             tipsContainer.InnerHtml = string.Join("", tips);
         }
+
     }
 }

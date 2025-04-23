@@ -9,7 +9,7 @@
             <h2 class="text-center mb-5" style="font-family: 'Monomaniac One', sans-serif; color:#ff6f61;">Tips</h2>
 
             <!-- Dropdown for client-side filtering -->
-            <label for="subjectFilter">Filter by Subject:</label>
+            <label for="subjectFilter">Sort Tips by Subject:</label>
             <select id="subjectFilter" class="form-control mb-4">
                 <option value="all">All Subjects</option>
                 <option value="Biology">Biology</option>
@@ -48,26 +48,72 @@
                 <option value="Engineering">Engineering</option>
             </select>
 
-            <div class="row" id="tips" runat="server">
-                <!-- Dynamic Tip Cards will be rendered here -->
-            </div>
+            <!-- Dropdown for client-side filtering -->
+            <label for="timeFilter">Sort Tips by Date:</label>
+<select id="timeFilter" class="form-control mb-4">
+    <option value="all">All Tips</option>
+    <option value="Newest">Newest First</option>
+    <option value="Oldest">Oldest First</option>
+</select>
+           <div class="row" id="tipsContainer" runat="server">
+    <!-- Tip cards go here -->
+</div>
         </div>
     </div>
 
     <!-- JavaScript for filtering tips by subject -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const filter = document.getElementById("subjectFilter");
-            filter.addEventListener("change", function () {
-                const selected = this.value.trim().toLowerCase(); // להבטיח שאין רווחים
-                const cards = document.querySelectorAll(".tip-card");
+ <script>
+     document.addEventListener("DOMContentLoaded", function () {
+         const subjectFilter = document.getElementById("subjectFilter");
+         const timeFilter = document.getElementById("timeFilter");
+         const container = document.querySelector('#MainContent_tipsContainer');
 
-                cards.forEach(card => {
-                    const subject = card.getAttribute("data-subject").trim().toLowerCase();
-                    card.style.display = (selected === "all" || subject === selected) ? "block" : "none";
-                });
-            });
-        });
+         // Store original list of all tip cards
+         const originalCards = Array.from(container.querySelectorAll(".tip-card"));
 
-    </script>
+         function applyFilters() {
+             const selectedSubject = subjectFilter.value.trim().toLowerCase();
+             const timeOrder = timeFilter.value;
+
+             // Filter cards based on selected subject
+             let filtered = originalCards.filter(card => {
+                 const cardSubject = card.getAttribute("data-subject").trim().toLowerCase();
+                 return selectedSubject === "all" || cardSubject === selectedSubject;
+             });
+
+             // Sort filtered cards by date if time order is selected
+             if (timeOrder === "Newest" || timeOrder === "Oldest") {
+                 filtered.sort((a, b) => {
+                     const dateA = new Date(a.getAttribute("data-date"));
+                     const dateB = new Date(b.getAttribute("data-date"));
+                     return timeOrder === "Newest" ? dateB - dateA : dateA - dateB;
+                 });
+             }
+
+             // Clear the container and rebuild rows with sorted & filtered cards
+             container.innerHTML = '';
+             let row;
+             filtered.forEach((card, index) => {
+                 card.style.display = "block";
+                 if (index % 3 === 0) {
+                     row = document.createElement("div");
+                     row.className = "row";
+                     row.style.backgroundColor = "#c5e2e2";
+                     container.appendChild(row);
+                 }
+                 row.appendChild(card);
+             });
+         }
+
+         // Apply filters when user changes subject or time order
+         subjectFilter.addEventListener("change", applyFilters);
+         timeFilter.addEventListener("change", applyFilters);
+
+         // Initial load
+         applyFilters();
+     });
+ </script>
+
+
+
 </asp:Content>
