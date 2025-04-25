@@ -51,7 +51,6 @@
             <!-- Dropdown for client-side filtering -->
             <label for="timeFilter" style="margin: 20px;">Sort Tips by Date:</label>
 <select id="timeFilter" class="dropdown-menu4" style="margin: -20px;" >
-    <option value="all" >All Tips</option>
     <option value="Newest">Newest First</option>
     <option value="Oldest">Oldest First</option>
 </select>
