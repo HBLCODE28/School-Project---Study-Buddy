@@ -6,7 +6,7 @@
     <div class="container my-5">
         <!-- Regular Calculator - One Line Layout -->
         <div class="calculator-container">
-            <input type="number" id="firstNumber" class="form-control calculator-input" placeholder="First number" />
+            <input type="number" id="firstNumber" class="form-control calculator-input" placeholder="number" />
             
             <select id="operation" class="form-control calculator-select">
                 <option value="add">+</option>
@@ -15,7 +15,7 @@
                 <option value="divide">÷</option>
             </select>
             
-            <input type="number" id="secondNumber" class="form-control calculator-input" placeholder="Second number" />
+            <input type="number" id="secondNumber" class="form-control calculator-input" placeholder="number" />
             
             <button class="button" onclick="calculate(event)">calculate</button>
         </div>
@@ -53,11 +53,12 @@
         .calculator-select {
             width: 120px;
             height: 50px;
-            font-size: 20px;
+            font-size: 25px;
             text-align: center;
             border-radius: 10px;
             border: 2px solid #ffcccc;
             background-color: #FFA49C;
+
         }
 
         .calculator-select {
