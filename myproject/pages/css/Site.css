@@ -158,9 +158,11 @@ body {
     }
 
     .button:hover {
-        color: #fff; /* לבן */
+        /*color: #fff;*/ /* לבן */
+        color: #cc5e5e;
         transform: scale(1.1);
         box-shadow: 0 0px 20px rgba(255, 102, 102, 0.4);
+        text-decoration: none;
     }
 
     .button:active {
