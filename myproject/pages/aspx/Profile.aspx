@@ -80,7 +80,7 @@ p {
                     <p id="firstname">First Name: <span runat="server" id="lblFirstName"></span></p>
                     <p id="lastname">Last Name: <span runat="server" id="lblLastName"></span></p>
                     <p id="email" style="margin-bottom: 20px;">Email: <span runat="server" id="lblEmail"></span></p>
-<a href="UserTips.aspx" class="button" style="inline-size:100px; margin-top: 10px;">
+<a href="UserTips.aspx" class="button" >
     Your Tips!
 </a>
 
@@ -93,7 +93,7 @@ p {
 
 
 <div id="admin" runat="server" visible="false">
-        <a href="AdminPage.aspx" class="button">
+        <a href="AdminPage.aspx" class="button"  >
             Admin Page
         </a>
 </div>
