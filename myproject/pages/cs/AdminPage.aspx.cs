@@ -107,8 +107,8 @@ namespace AdminPageNameSpace
 
                 // Table and cell styles
                 string tableStyle = "border-collapse: collapse; width: 100%;";
-                string headerStyle = "background-color: #f2f2f2;  padding: 8px; border: 1px solid black; cursor: pointer;";
-                string cellStyle = "padding: 8px; border: 1px solid black; text-align: left;";
+                string headerStyle = "background-color: #9bc7c7;  padding: 8px; border: 1px solid black; cursor: pointer;";
+                string cellStyle = "padding: 4px; border: 1px solid black; text-align: left;";
 
                 // Start HTML table
                 StringBuilder tableHtml = new StringBuilder();
